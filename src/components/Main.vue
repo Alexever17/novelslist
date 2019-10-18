@@ -1,5 +1,6 @@
 <template>
   <div id="start">
+    
     <navbar>
       <div class="uk-position-relative">
         <img
@@ -17,26 +18,7 @@
         </div>
       </div>
     </navbar>
-    <div id="cards" class="uk-child-width-1-3@m uk-grid-small uk-grid-match" uk-grid>
-      <div>
-        <div class="uk-card uk-card-hover uk-card-body">
-          <h3 class="uk-card-title">Hover</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-        </div>
-      </div>
-      <div>
-        <div class="uk-card uk-card-hover uk-card-body">
-          <h3 class="uk-card-title">Hover</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-        </div>
-      </div>
-      <!-- <div>
-        <div class="uk-card uk-card-hover uk-card-body">
-          <h3 class="uk-card-title">Hover</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-        </div>
-      </div> -->
-    </div>
+    
   </div>
 </template>
 
