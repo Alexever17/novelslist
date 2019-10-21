@@ -1,33 +1,38 @@
 <template>
-  <div id="start">
-    
+  <div id="nav">
     <navbar>
       <div class="uk-position-relative">
         <img
-          src="../assets/images/alejandro-escamilla-cZhUxIQjILg-unsplash.jpg"
+          src="../assets/images/danny-zjV8ptYgcEo-unsplash.jpg"
           alt="a book picture"
         />
         <div class="uk-position-top">
           <nav class="uk-navbar-container uk-navbar-transparent" uk-navbar>
             <div class="uk-navbar-center">
-              <a class="uk-navbar-item uk-logo" href="#">
-                <img src="../assets/images/logor.png" alt id="centerlogo" />
-              </a>
+              <ul class="uk-navbar-nav">
+                <li>
+                  <a href="#">Item</a>
+                </li>
+                <li class="uk-navbar-item uk-logo">
+                    <img src="../assets/images/logor.png" alt id="centerlogo" />
+                </li>
+                <li>
+                  <a href="#">Item</a>
+                </li>
+              </ul>
             </div>
           </nav>
         </div>
       </div>
     </navbar>
-    
   </div>
 </template>
 
 <script>
-// import axios from "axios";
 export default {
-  name: "Main",
+  name: "Nav",
   props: {
-    msg: String
+    
   }
 };
 </script>
@@ -36,6 +41,9 @@ export default {
 <style scoped lang="less">
 #centerlogo {
   min-height: 100px;
-  max-height: 20vh;
+  max-height: 15vh;
+}
+#nav {
+  margin-bottom: 1em;
 }
 </style>
