@@ -11,13 +11,13 @@
             <div class="uk-navbar-center">
               <ul class="uk-navbar-nav">
                 <li>
-                  <a href="#">Item</a>
+                  <a href="full-list">Full List</a>
                 </li>
                 <li class="uk-navbar-item uk-logo">
                     <img src="../assets/images/logor.png" alt id="centerlogo" />
                 </li>
                 <li>
-                  <a href="#">Item</a>
+                  <a href="#">Creator</a>
                 </li>
               </ul>
             </div>
@@ -31,17 +31,18 @@
 <script>
 export default {
   name: "Nav",
-  props: {
-    
-  }
+  props: {}
 };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="less">
+#nav {
+  max-height: 250px;
+}
 #centerlogo {
   min-height: 100px;
-  max-height: 15vh;
+  max-height: 200px;
 }
 #nav {
   margin-bottom: 1em;

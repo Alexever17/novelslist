@@ -1,7 +1,7 @@
 <template>
   <div id="explain">
     <div class="uk-flex uk-flex-center">
-      <div class="uk-child-width-1-2@m uk-grid-small uk-grid-match" uk-grid>
+      <div class=" uk-child-width-1-2@m uk-child-width-1-3@l uk-grid-small uk-grid-match uk-flex-center" uk-grid>
         <div>
           <div class="uk-card uk-card-default uk-card-body">
             <article class="uk-comment">
@@ -67,5 +67,6 @@ export default {
 <style scoped lang="less">
 #explain {
   margin: 0em 1em 1em 1em;
+  max-width: 1600px;
 }
 </style>
