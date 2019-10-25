@@ -17,7 +17,7 @@
                     <img src="../assets/images/logor.png" alt id="centerlogo" />
                 </li>
                 <li>
-                  <a href="#">Creator</a>
+                  <a href="https://github.com/Alexever17" target="_blank">Creator</a>
                 </li>
               </ul>
             </div>

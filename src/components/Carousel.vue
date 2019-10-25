@@ -8,10 +8,10 @@
       <!-- Entries into the Carousel -->
       <li class="sliderParent" v-for="novel in recentNovels()" v-bind:key="novel.id">
         <div class="novel">
-          <h4 class="title uk-heading-line uk-text-center">{{novel.Title}}</h4>
+          <h4 class="title uk-heading-line uk-text-center carouselTitle">{{novel.Title}}</h4>
           <div>
             <img :src="novel.Picture" :alt="novel.Title + ' Cover'" class="cover">
-            <h5>{{'Rating: ' + novel.Rank + '/10'}}</h5>
+            <h5 class="carouselRating">{{'Rating: ' + novel.Rank + '/10'}}</h5>
             <button class="uk-button uk-button-primary modalButton">More Information</button>
           </div>
         </div>
@@ -70,14 +70,24 @@ export default {
   background: rgba(57, 0, 90, 0.514);
   max-height: 600px;
 }
-#dotnav {
-  background-color: black !important;
-}
-.cover {
-  height: 430px;
-}
 .sliderParent {
   text-align: center;
-  border: 1px solid white;
+  
+}
+.carouselTitle {
+  margin: 5px 0;
+  height: 60px;
+  vertical-align: middle;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.cover {
+  height: 400px;
+  width: 300px;
+}
+.carouselRating {
+  margin: 10px 0 15px 0;
 }
 </style>
