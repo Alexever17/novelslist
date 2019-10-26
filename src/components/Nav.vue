@@ -2,10 +2,7 @@
   <div id="nav">
     <navbar>
       <div class="uk-position-relative">
-        <img
-          src="../assets/images/danny-zjV8ptYgcEo-unsplash.jpg"
-          alt="a book picture"
-        />
+        <img src="../assets/images/danny-zjV8ptYgcEo-unsplash.jpg" alt="a book picture" />
         <div class="uk-position-top">
           <nav class="uk-navbar-container uk-navbar-transparent" uk-navbar>
             <div class="uk-navbar-center">
@@ -14,7 +11,7 @@
                   <a href="#list" uk-scroll class="navbarLink">Full List</a>
                 </li>
                 <li class="uk-navbar-item uk-logo">
-                    <img src="../assets/images/logor.png" alt id="centerlogo" />
+                  <img src="../assets/images/logor.png" alt id="centerlogo" />
                 </li>
                 <li>
                   <a href="https://github.com/Alexever17" target="_blank" class="navbarLink">Creator</a>
@@ -49,5 +46,13 @@ export default {
 }
 .navbarLink {
   font-size: 200%;
+}
+@media screen and (max-width: 900px) {
+  .navbarLink {
+    font-size: 100%;
+  }
+  #centerlogo {
+    max-height: 150px;
+  }
 }
 </style>

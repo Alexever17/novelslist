@@ -1,7 +1,7 @@
 <template>
   <div id="list">
     <p>TEST</p>
-    <p>{{novels}}</p>
+    <p>{{JSON.stringify(novels[0])}}</p>
   </div>
 </template>
 
@@ -27,38 +27,30 @@ var firebaseConfig = {
   measurementId: process.env.VUE_APP_measurementId
 };
 
-var novelsArray;
-var dummy = "GRRRR";
+firebase.initializeApp(firebaseConfig);
+firebase.analytics();
+
+var db = firebase.firestore();
 
 export default {
-  beforeCreate() {
-    firebase.initializeApp(firebaseConfig);
-    firebase.analytics();
-
-    var db = firebase.firestore();
-    
-
-    db.collection("novels")
-      .get()
-      .then(function(query) {
-        novelsArray = query.docs;
-      })
-      .catch(function(error) {
-        return "Error getting documents";
-      });
-  },
   name: "List",
   props: {},
   data() {
     return {
-      novels: novelsArray,
-      text: dummy
+      novels: null
     };
   },
-  methods: {
-    logging() {
-      console.log(this.novels)
-    }
+  methods: {},
+  mounted() {
+    db.collection("novels")
+      .get()
+      .then(query => {
+        var result = query.docs.map(x => x.data());
+        this.novels = result;                
+      })
+      .catch(function(error) {
+        this.novels = "Error getting documents: " + error;
+      });
   }
 };
 </script>

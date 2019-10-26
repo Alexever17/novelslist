@@ -1,3 +1,5 @@
-module.exports = {
-  lintOnSave: process.env.NODE_ENV !== "production"
-};
+// for development purposes
+
+// module.exports = {
+//   lintOnSave: process.env.NODE_ENV !== "production"
+// };
