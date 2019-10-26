@@ -11,13 +11,13 @@
             <div class="uk-navbar-center">
               <ul class="uk-navbar-nav">
                 <li>
-                  <a href="full-list">Full List</a>
+                  <a href="#list" uk-scroll class="navbarLink">Full List</a>
                 </li>
                 <li class="uk-navbar-item uk-logo">
                     <img src="../assets/images/logor.png" alt id="centerlogo" />
                 </li>
                 <li>
-                  <a href="https://github.com/Alexever17" target="_blank">Creator</a>
+                  <a href="https://github.com/Alexever17" target="_blank" class="navbarLink">Creator</a>
                 </li>
               </ul>
             </div>
@@ -46,5 +46,8 @@ export default {
 }
 #nav {
   margin-bottom: 1em;
+}
+.navbarLink {
+  font-size: 200%;
 }
 </style>

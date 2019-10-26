@@ -1,7 +1,7 @@
 <template>
   <div id="list">
     <p>TEST</p>
-    <p>{{ getNovels() }}</p>
+    <p>{{novels}}</p>
   </div>
 </template>
 
@@ -27,29 +27,37 @@ var firebaseConfig = {
   measurementId: process.env.VUE_APP_measurementId
 };
 
-firebase.initializeApp(firebaseConfig);
-firebase.analytics();
+var novelsArray;
+var dummy = "GRRRR";
 
 export default {
+  beforeCreate() {
+    firebase.initializeApp(firebaseConfig);
+    firebase.analytics();
+
+    var db = firebase.firestore();
+    
+
+    db.collection("novels")
+      .get()
+      .then(function(query) {
+        novelsArray = query.docs;
+      })
+      .catch(function(error) {
+        return "Error getting documents";
+      });
+  },
   name: "List",
   props: {},
+  data() {
+    return {
+      novels: novelsArray,
+      text: dummy
+    };
+  },
   methods: {
-    getNovels() {
-      var db = firebase.firestore();
-
-      db.collection("novels")
-        .get()
-        .then(function(querySnapshot) {
-          querySnapshot.forEach(function(doc) {
-            // doc.data() is never undefined for query doc snapshots
-            console.log(doc.id, " => ", doc.data())
-            console.log(doc.data().Description)
-            return doc.data().Description
-          });
-        })
-        .catch(function(error) {
-          return ("Error getting documents");
-        });
+    logging() {
+      console.log(this.novels)
     }
   }
 };
