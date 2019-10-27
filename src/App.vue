@@ -1,9 +1,9 @@
 <template>
   <div id="app">
-    <Nav/>
-    <Explainer/>
-    <Carousel :novels="novels"/>
-    <List/>
+    <Nav />
+    <Explainer />
+    <Carousel :novels="novels" />
+    <List :novels="novels" />
   </div>
 </template>
 
@@ -15,7 +15,33 @@ import Nav from "./components/Nav.vue";
 import Explainer from "./components/Explainer.vue";
 import Carousel from "./components/Carousel.vue";
 import List from "./components/List.vue";
-import data from "./assets/data/data.json";
+import data from "./assets/data/csvjson.json";
+
+//the core of firebase
+import * as firebase from "firebase/app";
+
+// If you enabled Analytics in your project, add the Firebase SDK for Analytics
+import "firebase/analytics";
+
+// Add the Firebase products that you want to use
+import "firebase/auth";
+import "firebase/firestore";
+
+var firebaseConfig = {
+  apiKey: process.env.VUE_APP_apiKey,
+  authDomain: process.env.VUE_APP_authDomain,
+  databaseURL: process.env.VUE_APP_databaseURL,
+  projectId: process.env.VUE_APP_projectId,
+  storageBucket: process.env.VUE_APP_storageBucket,
+  messagingSenderId: process.env.VUE_APP_messagingSenderId,
+  appId: process.env.VUE_APP_appId,
+  measurementId: process.env.VUE_APP_measurementId
+};
+
+firebase.initializeApp(firebaseConfig);
+firebase.analytics();
+
+var db = firebase.firestore();
 
 export default {
   name: "app",
@@ -27,8 +53,37 @@ export default {
   },
   data() {
     return {
-      novels: data
+      novels: null
     };
+  },
+  mounted() {
+    db.collection("novels")
+      .get()
+      .then(query => {
+        var result = query.docs.map(x => x.data());
+        this.novels = result;
+      })
+      .catch(function(error) {
+        this.novels = "Error getting documents: " + error;
+      });
+  },
+  methods: {
+    // cool mass upload!
+
+    // upload() {
+    //   console.log(data);
+      
+    //   data.map(novel => {
+    //     db.collection("novels")
+    //       .add(novel)
+    //       .then(function(docRef) {
+    //         console.log("Document written with ID: ", docRef.id);
+    //       })
+    //       .catch(function(error) {
+    //         console.error("Error adding document: ", error);
+    //       });
+    //   });
+    // }
   }
 };
 </script>
@@ -38,7 +93,7 @@ export default {
 @import "./assets/less/theme.less";
 #app {
   background-image: url("assets/images/pipes.png");
-  background-size: 6em 6em;
+  background-size: 8em 8em;
   padding-bottom: 5em;
 }
 </style>

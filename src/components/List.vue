@@ -1,56 +1,74 @@
 <template>
-  <div id="list">
-    <p>TEST</p>
-    <p>{{JSON.stringify(novels[0])}}</p>
+  <div>
+    <vue-good-table id="list" :columns="columns" :rows="rows" />
   </div>
 </template>
 
 <script>
-//the core of firebase
-import * as firebase from "firebase/app";
-
-// If you enabled Analytics in your project, add the Firebase SDK for Analytics
-import "firebase/analytics";
-
-// Add the Firebase products that you want to use
-import "firebase/auth";
-import "firebase/firestore";
-
-var firebaseConfig = {
-  apiKey: process.env.VUE_APP_apiKey,
-  authDomain: process.env.VUE_APP_authDomain,
-  databaseURL: process.env.VUE_APP_databaseURL,
-  projectId: process.env.VUE_APP_projectId,
-  storageBucket: process.env.VUE_APP_storageBucket,
-  messagingSenderId: process.env.VUE_APP_messagingSenderId,
-  appId: process.env.VUE_APP_appId,
-  measurementId: process.env.VUE_APP_measurementId
-};
-
-firebase.initializeApp(firebaseConfig);
-firebase.analytics();
-
-var db = firebase.firestore();
+// import the styles
+import "vue-good-table/dist/vue-good-table.css";
+import { VueGoodTable } from "vue-good-table";
 
 export default {
   name: "List",
-  props: {},
+  props: { novels: Array },
+  components: {
+    VueGoodTable
+  },
+  methods: {
+    log() {
+      console.log(this.$props.novels[0])
+    }
+  },
   data() {
     return {
-      novels: null
+      columns: [
+        {
+          label: "Title",
+          field: "Title"
+        },
+        {
+          label: "Created On",
+          field: "Date",
+          type: "date",
+          dateInputFormat: "dd.MM.yyyy",
+          dateOutputFormat: "dd.MM.yyyy"
+        },
+        {
+          label: "Description",
+          field: "Description",
+          width: '400px'
+        },
+        {
+          label: "Dropped",
+          field: "Dropped",
+          type: "boolean"
+        },
+        {
+          label: "Link",
+          field: "Link"
+        },
+        {
+          label: "Origin",
+          field: "Origin"
+        },
+        {
+          label: "Picture",
+          field: "Picture"
+        },
+        {
+          label: "Progress",
+          field: "Progress"
+        },
+        {
+          label: "Rank",
+          field: "Rank",
+          type: "number"
+        },
+        
+      ],
+      rows: this.$props.novels
     };
-  },
-  methods: {},
-  mounted() {
-    db.collection("novels")
-      .get()
-      .then(query => {
-        var result = query.docs.map(x => x.data());
-        this.novels = result;                
-      })
-      .catch(function(error) {
-        this.novels = "Error getting documents: " + error;
-      });
   }
 };
 </script>
@@ -61,3 +79,4 @@ export default {
   margin: 0em 1em 1em 1em;
 }
 </style>
+
