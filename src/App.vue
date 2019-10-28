@@ -119,13 +119,9 @@ export default {
         this.novels = "Error getting documents: " + error;
       });
   },
-  methods: {
-    // cool mass upload!
-
-    // upload() {
-    //   console.log(data);
-      
-    //   data.map(novel => {
+  beforeCreate() {
+    //mass upload
+    // data.map(novel => {
     //     db.collection("novels")
     //       .add(novel)
     //       .then(function(docRef) {
@@ -135,7 +131,6 @@ export default {
     //         console.error("Error adding document: ", error);
     //       });
     //   });
-    // }
   }
 };
 </script>
