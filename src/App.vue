@@ -3,7 +3,7 @@
     <Nav />
     <Explainer />
     <Carousel :novels="novels" />
-    <List :novels="novels" />
+    <NovelsList :novels="novels" :columns="columns"/>
   </div>
 </template>
 
@@ -14,7 +14,7 @@ UIkit.use(Icons);
 import Nav from "./components/Nav.vue";
 import Explainer from "./components/Explainer.vue";
 import Carousel from "./components/Carousel.vue";
-import List from "./components/List.vue";
+import NovelsList from "./components/NovelsList.vue";
 import data from "./assets/data/csvjson.json";
 
 //the core of firebase
@@ -49,11 +49,63 @@ export default {
     Nav,
     Explainer,
     Carousel,
-    List
+    NovelsList
   },
   data() {
     return {
-      novels: null
+      novels: [{}],
+      columns: [
+        {
+          label: "Picture",
+          field: "Picture",
+          width: '90px'
+        },
+        {
+          label: "Title",
+          field: "Title",
+          width: '300px'
+        },
+        {
+          label: "Rank",
+          field: "Rank",
+          type: "number",
+          width: '30px'
+        },
+        {
+          label: "Added",
+          field: "Date",
+          type: "date",
+          dateInputFormat: "dd.MM.yyyy",
+          dateOutputFormat: "dd.MM.yyyy",
+          hidden: true,
+        },
+        {
+          label: "Description",
+          field: "Description"
+        },
+        {
+          label: "Dropped",
+          field: "Dropped",
+          type: "boolean",
+          width: '55px'
+        },
+        {
+          label: "Origin",
+          field: "Origin",
+          filterable: true,
+          width: '80px'
+        },
+        {
+          label: "Link",
+          field: "Link",
+          width: '70px'
+        },
+        {
+          label: "Progress",
+          field: "Progress",
+          hidden: true,
+        },      
+      ]
     };
   },
   mounted() {

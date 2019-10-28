@@ -68,7 +68,7 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="less">
 #explain {
-  margin: 0em 1em 1em 1em;
+  margin: 0em 1.5em 1.5em 1.5em;
   max-width: 1600px;
 }
 @media screen and (min-width: 1600px) {

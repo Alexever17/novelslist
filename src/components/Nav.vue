@@ -1,6 +1,6 @@
 <template>
   <div id="nav">
-    <navbar>
+    <div>
       <div class="uk-position-relative">
         <img src="../assets/images/danny-zjV8ptYgcEo-unsplash.jpg" alt="a book picture" />
         <div class="uk-position-top">
@@ -21,7 +21,7 @@
           </nav>
         </div>
       </div>
-    </navbar>
+    </div>
   </div>
 </template>
 

@@ -56,7 +56,7 @@ export default {
   props: { novels: Array },
   methods: {
     recentNovels() {
-      let recent = this.$props.novels.slice(0, 8);
+      let recent = this.novels.slice(0, 8);
       return (recent ? recent : null);
     }
   }
@@ -66,7 +66,7 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="less">
 #carousel {
-  margin: 0em 1em 1em 1em;
+  margin: 0em 1.5em 1.5em 1.5em;
   background: rgba(57, 0, 90, 0.514);
   max-height: 600px;
 }
