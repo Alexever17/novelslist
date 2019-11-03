@@ -1,0 +1,91 @@
+{
+    "tableSearch": {
+        "enabled": true,
+        "trigger": "",
+        "skipDiacritics": true,
+        "placeholder": "Type out any keywords :)"
+    },
+      "tableSort": {
+        "enabled": true,
+        "initialSortBy": { "field": "Date", "type": "desc"
+        }
+    },
+      "tablePagination": {
+        "enabled": true,
+        "mode": "pages",
+        "perPage": 7,
+        "position": "bottom",
+        "perPageDropdown": [
+            7,
+            20,
+            50,
+            100
+        ],
+        "dropdownAllowAll": false,
+        "setCurrentPage": 1,
+        "nextLabel": "next",
+        "prevLabel": "previous",
+        "rowsPerPageLabel": "Rows per page",
+        "ofLabel": "of",
+        "pageLabel": "Page",
+        "allLabel": "All"
+    },
+      "columns": [
+        {
+          "label": "Picture",
+          "field": "Picture",
+          "width": "90px",
+          "sortable": false
+        },
+        {
+          "label": "Title",
+          "field": "Title",
+          "width": "250px"
+        },
+        {
+          "label": "Rank",
+          "field": "Rank",
+          "type": "number",
+          "width": "35px"
+        },
+        {
+          "label": "Added",
+          "field": "Date",
+          "type": "date",
+          "dateInputFormat": "dd.MM.yyyy",
+          "dateOutputFormat": "dd.MM.yyyy",
+          "hidden": false,
+          "width": "110px"
+        },
+        {
+          "label": "Description",
+          "field": "Description",
+          "sortable": false
+        },
+        {
+          "label": "Labels",
+          "field": "Dropped",
+          "type": "boolean",
+          "width": "55px"
+        },
+        {
+          "label": "Origin",
+          "field": "Origin",
+          "width": "80px",
+          "sortable": false,
+          "hidden": true
+        },
+        {
+          "label": "Link",
+          "field": "Link",
+          "width": "70px",
+          "sortable": false
+        },
+        {
+          "label": "Progress",
+          "field": "Progress",
+          "hidden": true,
+          "sortable": false
+        }
+    ]
+}

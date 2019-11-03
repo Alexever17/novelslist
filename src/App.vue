@@ -3,7 +3,7 @@
     <Nav />
     <Explainer />
     <Carousel :novels="novels" />
-    <NovelsList :novels="novels" :columns="columns"/>
+    <NovelsList :novels="novels"/>
   </div>
 </template>
 
@@ -15,7 +15,8 @@ import Nav from "./components/Nav.vue";
 import Explainer from "./components/Explainer.vue";
 import Carousel from "./components/Carousel.vue";
 import NovelsList from "./components/NovelsList.vue";
-import data from "./assets/data/csvjson.json";
+//for mass upload
+//import data from "./assets/data/csvjson.json";
 
 //the core of firebase
 import * as firebase from "firebase/app";
@@ -53,63 +54,11 @@ export default {
   },
   data() {
     return {
-      novels: [{}],
-      columns: [
-        {
-          label: "Picture",
-          field: "Picture",
-          width: '90px'
-        },
-        {
-          label: "Title",
-          field: "Title",
-          width: '300px'
-        },
-        {
-          label: "Rank",
-          field: "Rank",
-          type: "number",
-          width: '30px'
-        },
-        {
-          label: "Added",
-          field: "Date",
-          type: "date",
-          dateInputFormat: "dd.MM.yyyy",
-          dateOutputFormat: "dd.MM.yyyy",
-          hidden: true,
-        },
-        {
-          label: "Description",
-          field: "Description"
-        },
-        {
-          label: "Dropped",
-          field: "Dropped",
-          type: "boolean",
-          width: '55px'
-        },
-        {
-          label: "Origin",
-          field: "Origin",
-          filterable: true,
-          width: '80px'
-        },
-        {
-          label: "Link",
-          field: "Link",
-          width: '70px'
-        },
-        {
-          label: "Progress",
-          field: "Progress",
-          hidden: true,
-        },      
-      ]
+      novels: [{}]
     };
   },
   mounted() {
-    db.collection("novels")
+    db.collection("novels").orderBy("Date", "desc")
       .get()
       .then(query => {
         var result = query.docs.map(x => x.data());
