@@ -1,4 +1,4 @@
-# novelslist 
+# Novelslist 
 
 
 The third version of my website to showcase my favorit novels and books, this time with Vue.js
@@ -11,11 +11,19 @@ informaitons of all the books I read and also maintain their progress easily wit
 Secondly, this functions as a platform to learn vue.js, a makor frontend library. To learn more about it head below.
 In generally if possible this project will be constantly updated and will hopefully include access for users.
 
+## Chingu
+
+This project is part of the [Chingu](https://chingu.io) programm.
+
+"Chingu is a remote 6-week program for web developers. You will build a project in a remote team and level-up with the technical and soft skills required in a professional software job."
+
+Please wisit them at the link above!
+
 ## Livesite
 
 ![badge website online](https://img.shields.io/website?style=for-the-badge&up_message=online&url=http%3A%2F%2Fnovelslist.netlify.com%2F)
 
-Live website can be currently found under: [noveslist on netlify](https://novelslist.netlify.com/).
+Live website can be currently found under: [novelslist on netlify](https://novelslist.netlify.com/).
 
 Later it will be migrated to the custom URL currently open with an old version: [novelslist](https://novelslist.com/)
 
