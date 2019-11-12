@@ -1,5 +1,12 @@
 <template>
   <div id="list">
+    <div class="uk-card uk-card-default uk-card-body" id="tabsTitle">
+      <ul class="uk-flex-left" uk-tab>
+        <li class="uk-active">
+          <h2 class="tabsTitleH2">Novel Database</h2>
+        </li>
+      </ul>
+    </div>
     <div class="uk-card uk-card-default uk-card-body" id="tabsOuter">
       <ul class="uk-flex-left" uk-tab id="tabs">
         <li class="uk-active">
@@ -64,10 +71,10 @@
           <span class="uk-label tableLabel">{{props.row.Origin}}</span>
         </span>
         <span v-if="props.column.field == 'Picture'">
-          <img :src="props.row.Picture" class="tablePicture" />
+          <img rel="preconnect" :src="props.row.Picture" class="tablePicture" :alt="props.row.Title + ' Cover'"/>
         </span>
         <span v-if="props.column.field == 'Link'">
-          <a :href="props.row.Link" class="uk-button uk-button-default">Link</a>
+          <a rel="preconnect" :href="props.row.Link" class="uk-button uk-button-default">Link</a>
         </span>
         <span v-if="props.column.field == 'Rank'">
           <h3>{{props.row.Rank}}</h3>
@@ -128,6 +135,9 @@ export default {
       } else {
         this.tableNovels = this.novels.filter(el => el.Origin == input);
       }
+    },
+    tabsClickDropped() {
+      this.tableNovels = this.novels.filter(el => el.Dropped == true);
     }
   }
 };
@@ -135,6 +145,17 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="less">
+#tabsTitle {
+  margin: 0em 1.5em 0em 1.5em;
+  padding: 10px 0px 0px 0px;
+  border: 1px solid #4d4e5234;
+  border-width: 1px 1px 0px 1px;
+  display: flex;
+  justify-content: center; 
+}
+.tabsTitleH2 {
+  margin: 0;
+}
 #tabsOuter {
   margin: 0em 1.5em 0em 1.5em;
   padding: 10px 0px 0px 0px;

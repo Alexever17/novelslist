@@ -13,7 +13,7 @@
         <div class="novel">
           <h4 class="title uk-heading-line uk-text-center carouselTitle">{{novel.Title}}</h4>
           <div>
-            <img :src="novel.Picture" :alt="novel.Title + ' Cover'" class="cover" />
+            <img rel="preconnect" :src="novel.Picture" :alt="novel.Title + ' Cover'" class="cover" />
             <h5 class="carouselRating">{{'Rating: ' + novel.Rank + '/10'}}</h5>
             <a :href="novel.Link" target="_blank">
               <button class="uk-button uk-button-primary modalButton">More Information</button>
