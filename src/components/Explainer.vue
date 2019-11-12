@@ -5,7 +5,7 @@
       uk-grid
     >
       <div>
-        <div class="uk-card uk-card-default uk-card-body">
+        <div class="uk-card uk-card-default uk-card-body borderAddition">
           <article class="uk-comment">
             <header class="uk-comment-header uk-grid-medium uk-flex-middle uk-grid" uk-grid>
               <div class="uk-width-auto uk-first-column">
@@ -38,7 +38,7 @@
         </div>
       </div>
       <div>
-        <div class="uk-card uk-card-default uk-card-body">
+        <div class="uk-card uk-card-default uk-card-body borderAddition">
           <h3 class="uk-card-title">Where can I read novels?</h3>
           <p>Sometimes it is difficult to find the most interesting novels, because many are translated by fans and aren't released officially. There are multiple sources to find novels but two of the most famous are novelupdates.com and webnovel.com. Novelupdates is a website which tracks all translated novels and has their information, but does not display the recent chapters for paid chapters. But you can find the licensing information. Webnovel meanwhile is the biggest plattform for translated and original novels.</p>
           <a href="https://novelupdates.com">Novel Updates</a>
@@ -70,6 +70,9 @@ export default {
 #explain {
   margin: 0em 1.5em 1.5em 1.5em;
   max-width: 1600px;
+}
+.borderAddition {
+  border: 1px solid #4d4e5234;
 }
 @media screen and (min-width: 1600px) {
     #explain {
