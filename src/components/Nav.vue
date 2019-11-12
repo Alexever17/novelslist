@@ -44,6 +44,13 @@ export default {
 #nav {
   margin-bottom: 1em;
 }
+.uk-navbar-nav > li:hover > a {
+  color: #999;
+}
+.uk-navbar-nav > li:hover > a:hover,
+.uk-navbar-nav > li > a:focus {
+  color: #666;
+}
 .navbarLink {
   font-size: 200%;
 }
