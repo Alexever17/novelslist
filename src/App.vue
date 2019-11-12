@@ -1,9 +1,9 @@
 <template>
   <div id="app">
     <Nav />
-    <Explainer />
     <Carousel :novels="novels" />
-    <NovelsList :novels="novels"/>
+    <Explainer />
+    <NovelsList :novels="novels" />
   </div>
 </template>
 
@@ -58,7 +58,8 @@ export default {
     };
   },
   mounted() {
-    db.collection("novels").orderBy("Date", "desc")
+    db.collection("novels")
+      .orderBy("Date", "desc")
       .get()
       .then(query => {
         var result = query.docs.map(x => x.data());
