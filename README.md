@@ -1,23 +1,19 @@
 # Novelslist 
 
-
 The third version of my website to showcase my favorit novels and books, this time with Vue.js
 
 ## Description
 
 This is an ongoing project with multiple purposes in mind.
-First of all I would like to create an easy, digital repository to save the 
-informaitons of all the books I read and also maintain their progress easily with cross platform tools.
-Secondly, this functions as a platform to learn vue.js, a makor frontend library. To learn more about it head below.
-In generally if possible this project will be constantly updated and will hopefully include access for users.
+First of all I would like to create an easy, digital repository to save the informaitons of all the books I read and also maintain their progress easily with cross platform tools. Secondly, this functions as a project to learn vue.js, a major frontend library. To learn more about it head to the Packages section. If possible this project will be constantly updated and will hopefully include access for users.
 
 ## Chingu
 
-This project is part of the [Chingu](https://chingu.io) programm.
+This project is part of the [Chingu](https://chingu.io) program.
 
 "Chingu is a remote 6-week program for web developers. You will build a project in a remote team and level-up with the technical and soft skills required in a professional software job."
 
-Please wisit them at the link above!
+Please visit them at the link above!
 
 ## Livesite
 
@@ -25,7 +21,7 @@ Please wisit them at the link above!
 
 Live website can be currently found under: [novelslist on netlify](https://novelslist.netlify.com/).
 
-Later it will be migrated to the custom URL currently open with an old version: [novelslist](https://novelslist.com/)
+Later it will be migrated to the custom URL which is currently online with an old version: [novelslist](https://novelslist.com/)
 
 ## Preview
 
@@ -33,7 +29,7 @@ Later it will be migrated to the custom URL currently open with an old version: 
 
 ## Roadmap
 
-Live preview will be updated constantly thorugh development.
+Live preview will be updated constantly through development.
 A finished MVP version of the website will be up on: 15.12.2019
 Future Version will be announced at a later date.
 
@@ -64,8 +60,8 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 ## Packages
 
 - [UIkit](https://getuikit.com/). - Overall great and flexible css library and additional functionality like a carousel. 
-- [vue.js](https://vuejs.org/). - my prefered front end library. Vue is amazing
-- [vue-good-table](https://xaksis.github.io/vue-good-table/) - Amazing and superbly powerful vue component for tables.
+- [vue.js](https://vuejs.org/). - My prefered front end library. Vue is amazing
+- [vue-good-table](https://xaksis.github.io/vue-good-table/) - Great and superbly powerful vue component for tables.
 
 ## Author(s)
 
