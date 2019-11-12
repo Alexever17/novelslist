@@ -81,7 +81,7 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="less">
 #carousel {
-  margin: 0em 1.5em 1.5em 1.5em;
+  margin: 0em 2em 2em 2em;
   background: linear-gradient(
     90deg,
     rgba(57, 0, 90, 0.6),
