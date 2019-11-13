@@ -63,7 +63,16 @@ export default {
       .get()
       .then(query => {
         var result = query.docs.map(x => x.data());
-        this.novels = result;
+        //sorting for date in the novels with the most recent first
+        this.novels = result.sort(function(a, b) {
+          var aa = a.Date.split(".")
+              .reverse()
+              .join(""),
+            bb = b.Date.split(".")
+              .reverse()
+              .join("");
+          return aa < bb ? 1 : aa > bb ? -1 : 0;
+        });
       })
       .catch(function(error) {
         this.novels = "Error getting documents: " + error;
