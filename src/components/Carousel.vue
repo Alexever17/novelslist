@@ -1,7 +1,7 @@
 <template>
   <div
     class="uk-position-relative uk-light uk-slider uk-slider-container"
-    uk-slider="autoplay: true; autoplay-interval: 4000"
+    uk-slider="autoplay: true; autoplay-interval: 6000"
     id="carousel"
   >
     <ul
@@ -9,15 +9,22 @@
       style="transform: translateX(0px);"
     >
       <!-- Entries into the Carousel -->
-      <li class="sliderParent" v-for="novel in carouselData" v-bind:key="novel.id">
+      <li class="sliderParent" v-for="(novel, index) in carouselData" v-bind:key="novel.id">
         <div class="novel">
-          <h4 class="title uk-heading-line uk-text-center carouselTitle">{{novel.Title}}</h4>
+          <h3 class="title uk-heading-line uk-text-center carouselTitle">{{novel.Title}}</h3>
           <div>
             <img rel="preconnect" :src="novel.Picture" :alt="novel.Title + ' Cover'" class="cover" />
             <h5 class="carouselRating">{{'Rating: ' + novel.Rank + '/10'}}</h5>
-            <a :href="novel.Link" target="_blank">
-              <button class="uk-button uk-button-primary modalButton">More Information</button>
-            </a>
+
+            <!-- This is a button toggling the modal with the default close button -->
+            <button
+              class="uk-button uk-button-primary"
+              type="button"
+              :uk-toggle="'target: #' + 'modal' + modalIdMaker(novel.Title)"
+            >More Info</button>
+
+           <Modal :novel="novel" :id="'modal' + modalIdMaker(novel.Title)" uk-modal/>
+
           </div>
         </div>
       </li>
@@ -61,19 +68,27 @@
 </template>
 
 <script>
+import Modal from "./Modal.vue";
+
 export default {
   name: "Carousel",
   props: { novels: Array },
+  components: {Modal},
   watch: {
     // whenever novels changes, this function will run
     novels: function(newVal, oldVal) {
-      this.carouselData = newVal.slice(0,8)
+      this.carouselData = newVal.slice(0, 8);
     }
   },
   data() {
     return {
       carouselData: []
     };
+  },
+  methods: {
+    modalIdMaker(input) {
+      return input.replace(/\W+/g, "");
+    }
   }
 };
 </script>
