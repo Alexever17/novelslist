@@ -1,13 +1,13 @@
 <template>
   <div id="list">
-    <div class="uk-card uk-card-default uk-card-body" id="tabsTitle">
+    <div class="uk-card uk-card-default uk-card-body tabsBorder" id="tabsTitle">
       <ul class="uk-flex-left" uk-tab>
         <li class="uk-active">
           <h2 class="tabsTitleH2">Novel Database</h2>
         </li>
       </ul>
     </div>
-    <div class="uk-card uk-card-default uk-card-body" id="tabsOuter">
+    <div class="uk-card uk-card-default uk-card-body tabsBorder" id="tabsOuter">
       <ul class="uk-flex-left" uk-tab id="tabs">
         <li class="uk-active">
           <a href="#" @click="tabsClick('full')">Full List</a>
@@ -46,7 +46,7 @@
     >
       <template slot="table-row" slot-scope="props">
         <span v-if="props.column.field == 'Title'">
-          <h3>{{props.row.Title}}</h3>
+          <h3>{{ props.row.Title }}</h3>
         </span>
         <span v-if="props.column.field == 'Description'">
           <ul uk-accordion>
@@ -55,7 +55,7 @@
                 <h3>Description</h3>
               </a>
               <div class="uk-accordion-content">
-                <p>{{props.row.Description}}</p>
+                <p>{{ props.row.Description }}</p>
               </div>
             </li>
           </ul>
@@ -64,23 +64,34 @@
           <span
             :class="props.row.Dropped ? labelDanger : labelSuccess"
             v-if="props.row.Dropped"
-          >Dropped</span>
-          <span class="uk-label tableLabel">{{props.row.Origin}}</span>
+            >Dropped</span
+          >
+          <span class="uk-label tableLabel">{{ props.row.Origin }}</span>
         </span>
         <span v-if="props.column.field == 'Origin'">
-          <span class="uk-label tableLabel">{{props.row.Origin}}</span>
+          <span class="uk-label tableLabel">{{ props.row.Origin }}</span>
         </span>
         <span v-if="props.column.field == 'Picture'">
-          <img rel="preconnect" :src="props.row.Picture" class="tablePicture" :alt="props.row.Title + ' Cover'"/>
+          <img
+            rel="preconnect"
+            :src="props.row.Picture"
+            class="tablePicture"
+            :alt="props.row.Title + ' Cover'"
+          />
         </span>
         <span v-if="props.column.field == 'Link'">
-          <a rel="preconnect" :href="props.row.Link" class="uk-button uk-button-default">Link</a>
+          <a
+            rel="preconnect"
+            :href="props.row.Link"
+            class="uk-button uk-button-default"
+            >Link</a
+          >
         </span>
         <span v-if="props.column.field == 'Rank'">
-          <h3>{{props.row.Rank}}</h3>
+          <h3>{{ props.row.Rank }}</h3>
         </span>
         <span v-if="props.column.field == 'Date'">
-          <h3>{{props.row.Date}}</h3>
+          <h3>{{ props.row.Date }}</h3>
         </span>
       </template>
     </vue-good-table>
@@ -145,48 +156,52 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="less">
+@import "../assets/less/main.less";
+
+#list {
+  margin: 0em 2em;
+}
+
+.tabsBorder {
+  padding: 10px 0 0 0;
+  border: 1px solid @borderColor;
+  border-width: 1px 1px 0px 1px;
+}
+
 #tabsTitle {
-  margin: 0em 1.5em 0em 1.5em;
-  padding: 10px 0px 0px 0px;
-  border: 1px solid #4d4e5234;
-  border-width: 1px 1px 0px 1px;
   display: flex;
-  justify-content: center; 
+  justify-content: center;
+  .tabsTitleH2 {
+    margin: 0;
+  }
 }
-.tabsTitleH2 {
-  margin: 0;
-}
-#tabsOuter {
-  margin: 0em 1.5em 0em 1.5em;
-  padding: 10px 0px 0px 0px;
-  border: 1px solid #4d4e5234;
-  border-width: 1px 1px 0px 1px;
-}
+
 #tabs {
   margin-bottom: 0;
+  &::before {
+    border-bottom-width: 0;
+  }
+  & > .uk-active > a {
+    background-color: @mainColor;
+    color: white;
+  }
 }
-#tabs::before {
-  border-bottom-width: 0;
+
+.uk-tab {
+  & > * {
+    margin-bottom: 10px;
+  }
+  & > * > a {
+    border: 0px solid transparent;
+    font-size: 150%;
+  }
 }
-#tabs > .uk-active > a {
-  background-color: rgba(57, 0, 90, 0.6);
-  color: white;
-}
-.uk-tab > * {
-  margin-bottom: 10px;
-}
-.uk-tab > * > a {
-  border: 0px solid transparent;
-  font-size: 150%;
-}
+
 .tablePicture {
   height: 150px;
 }
+
 .tableLabel {
   font-size: 100%;
 }
-#table {
-  margin: 0em 1.5em 1.5em 1.5em;
-}
 </style>
-
