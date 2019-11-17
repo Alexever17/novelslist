@@ -4,6 +4,7 @@
     <Carousel :novels="novels" />
     <Explainer />
     <NovelsList :novels="novels" />
+    <button style="uk-button uk-button-primary"><a href="#" uk-scroll uk-totop></a></button>
   </div>
 </template>
 
@@ -97,6 +98,7 @@ export default {
 <style lang="less">
 @import "../node_modules/uikit/src/less/uikit.less";
 @import "./assets/less/theme.less";
+
 #app {
   background-image: url("assets/images/pipes.png");
   background-size: 8em 8em;
