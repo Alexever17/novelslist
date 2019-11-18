@@ -182,7 +182,7 @@ export default {
     border-bottom-width: 0;
   }
   & > .uk-active > a {
-    background-color: @mainColor;
+    background-color: @mainColorLight;
     color: white;
   }
 }
@@ -202,6 +202,6 @@ export default {
 }
 
 .tableLabel {
-  font-size: 100%;
+  font-size: 110%;
 }
 </style>

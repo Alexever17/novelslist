@@ -2,7 +2,7 @@
   <div id="app">
     <Nav />
     <Carousel :novels="novels" />
-    <Explainer />
+    <Explainer :novels="novels"/>
     <NovelsList :novels="novels" />
     <button style="uk-button uk-button-primary"><a href="#" uk-scroll uk-totop></a></button>
   </div>
