@@ -2,9 +2,11 @@
   <div id="app">
     <Nav />
     <Carousel :novels="novels" />
-    <Explainer :novels="novels"/>
+    <Explainer :novels="novels" />
     <NovelsList :novels="novels" />
-    <button style="uk-button uk-button-primary"><a href="#" uk-scroll uk-totop></a></button>
+    <div class="margin uk-container-expand uk-flex uk-flex-center">
+        <a href="#" style="uk-button uk-button-default" id="upButton" uk-scroll uk-totop> Scroll up</a>
+    </div>
   </div>
 </template>
 
@@ -98,10 +100,26 @@ export default {
 <style lang="less">
 @import "../node_modules/uikit/src/less/uikit.less";
 @import "./assets/less/theme.less";
+@import "./assets/less/main.less";
 
 #app {
   background-image: url("assets/images/pipes.png");
   background-size: 8em 8em;
   padding-bottom: 5em;
+}
+
+.margin {
+  margin: 2em 2em;
+}
+
+#upButton {
+  background-color: fadeout(@mainColor, 15%);
+  color: white;
+  border: 1px solid @borderColor;
+  padding: 0.7em 1em;
+  font-size: 150%;
+  & svg {
+    display: none;
+  }
 }
 </style>

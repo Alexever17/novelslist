@@ -84,16 +84,18 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="less">
+@import "../assets/less/main.less";
+
 #carousel {
-  margin: 0em 4em 2em 4em;
+  margin: 0em 2em 2em 2em;
   background: linear-gradient(
     90deg,
-    rgba(57, 0, 90, 0.6),
-    rgba(57, 0, 90, 0.5),
-    rgba(57, 0, 90, 0.6)
+    @mainColorLight,
+    fadeout(@mainColor, 50%),
+    @mainColorLight
   );
   max-height: 600px;
-  border: 1px solid #4d4e5234;
+  border: 1px solid @borderColor;
 }
 .sliderParent {
   text-align: center;

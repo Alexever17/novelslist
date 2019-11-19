@@ -1,7 +1,7 @@
 <template>
   <div id="explain" class="uk-flex uk-flex-center">
     <div
-      class="uk-child-width-1-2@m uk-child-width-1-3@l uk-grid-small uk-grid-match uk-flex-center uk-width-1-1"
+      class="uk-child-width-1-2@m uk-child-width-1-2@l uk-grid-small uk-grid-match uk-flex-center uk-width-1-1"
       uk-grid
     >
       <div>
@@ -39,30 +39,29 @@
               <h3 class="uk-card-title">Welcome!</h3>
               <p>
                 I love reading web novels and want to share my passion with you.
-                On this website you can find all novels I ever read. Please
-                scroll down to see my most favorite ones.
+                On this website you can find all novels I ever read.
+                <br /><br />
+                Sometimes it is difficult to find the most interesting novels,
+                because many are translated by fans and aren't released
+                officially. There are multiple sources to find novels but the
+                two most used are novelupdates.com and webnovel.com.
+                Novelupdates is a website which tracks all translated novels and
+                has their information. There you can find the licensing
+                information and where you can read it. Webnovel meanwhile is the
+                biggest plattform for translated and original novels.
               </p>
-              <PieChart :novels="novels" :id="piechart" />
+              <a href="https://novelupdates.com">Novel Updates</a>
+              <br />
+              <a href="https://webnovel.com">Webnovel</a>
             </div>
           </article>
         </div>
       </div>
       <div>
         <div class="uk-card uk-card-default uk-card-body borderAddition">
-          <h3 class="uk-card-title">Where can I read novels?</h3>
-          <p>
-            Sometimes it is difficult to find the most interesting novels,
-            because many are translated by fans and aren't released officially.
-            There are multiple sources to find novels but the two most used are
-            novelupdates.com and webnovel.com. Novelupdates is a website which
-            tracks all translated novels and has their information. There you
-            can find the licensing information and where you can read it.
-            Webnovel meanwhile is the biggest plattform for translated and
-            original novels.
-          </p>
-          <a href="https://novelupdates.com">Novel Updates</a>
-          <br />
-          <a href="https://webnovel.com">Webnovel</a>
+          <h3 class="uk-card-title">Database Information</h3>
+          <p>Click on a category to disable it from the chart or add it again.</p>
+          <PieChart :options="options" :chartdata="chartdata" />
         </div>
       </div>
     </div>
@@ -71,10 +70,39 @@
 
 <script>
 import PieChart from "./PieChart.vue";
+import randomColor from "random-color";
 
 export default {
   name: "Explainer",
   props: { novels: Array },
+  data() {
+    return {
+      chartdata: {
+        labels: [
+          "Chinese Novels",
+          "Korean Novels",
+          "Japanese Novels",
+          "Webnovel Originals",
+          "Traditional Books",
+          "Other Websites",
+          "Dropped Novels"
+        ],
+        datasets: [
+          {
+            label: "Alexever17 Novels",
+            backgroundColor: this.colorCreator(),
+            data: [63, 15, 24, 17, 1, 2, 58]
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        circumference: Math.PI,
+        rotation: -Math.PI
+      }
+    };
+  },
   components: { PieChart },
   methods: {
     timeNumber() {
@@ -82,6 +110,13 @@ export default {
       const date2 = new Date();
       let days = Math.round((date2 - date1) / 1000 / 60 / 60 / 24);
       return days;
+    },
+    colorCreator() {
+      let output = [];
+      for (let i = 0; i < 7; i++) {
+        output[i] = randomColor(0.4, 0.86).rgbString();
+      }
+      return output;
     }
   }
 };
@@ -89,12 +124,15 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="less">
+
+@import "../assets/less/main.less";
+
 #explain {
   margin: 0em 1.5em 1.5em 1.5em;
   max-width: 1600px;
 }
 .borderAddition {
-  border: 1px solid #4d4e5234;
+  border: 1px solid @borderColor;
 }
 @media screen and (min-width: 1600px) {
   #explain {

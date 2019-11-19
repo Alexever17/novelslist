@@ -95,6 +95,30 @@
         </span>
       </template>
     </vue-good-table>
+
+    <vue-good-table
+      id="tableMobile"
+      :columns="columnsMobile"
+      :rows="tableNovels"
+      :search-options="tableSearch"
+      :pagination-options="tablePaginationMobile"
+      :sort-options="tableSortMobile"
+    >
+      <template slot="table-row" slot-scope="props">
+        <span v-if="props.column.field == 'Title'">
+          <h3>{{ props.row.Title }}</h3>
+        </span>
+
+        <span v-if="props.column.field == 'Picture'">
+          <img
+            rel="preconnect"
+            :src="props.row.Picture"
+            class="tablePictureMobile"
+            :alt="props.row.Title + ' Cover'"
+          />
+        </span>
+      </template>
+    </vue-good-table>
   </div>
 </template>
 
@@ -123,8 +147,11 @@ export default {
       labelSuccess: "uk-label uk-label-success tableLabel",
       tableSearch: variables.tableSearch,
       tableSort: variables.tableSort,
+      tableSortMobile: variables.tableSortMobile,
       tablePagination: variables.tablePagination,
-      columns: variables.columns
+      tablePaginationMobile: variables.tablePaginationMobile,
+      columns: variables.columns,
+      columnsMobile: variables.columnsMobile
     };
   },
   methods: {
@@ -162,6 +189,14 @@ export default {
   margin: 0em 2em;
 }
 
+#table {
+  .over1200();
+}
+
+#tableMobile {
+  .under1200();
+}
+
 .tabsBorder {
   padding: 10px 0 0 0;
   border: 1px solid @borderColor;
@@ -197,8 +232,18 @@ export default {
   }
 }
 
+@media only screen and (max-width: 1200px) {
+  .uk-tab > * > a {
+    font-size: 110%;
+  }
+}
+
 .tablePicture {
   height: 150px;
+}
+
+.tablePictureMobile {
+  height: 100px;
 }
 
 .tableLabel {
