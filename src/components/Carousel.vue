@@ -58,6 +58,7 @@
 
 <script>
 import Modal from "./Modal.vue";
+import variables from "../assets/data/variables.json";
 
 export default {
   name: "Carousel",
@@ -71,7 +72,7 @@ export default {
   },
   data() {
     return {
-      carouselData: []
+      carouselData: variables.placeholderNovels
     };
   },
   methods: {
