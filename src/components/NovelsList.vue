@@ -142,7 +142,7 @@ export default {
   },
   data() {
     return {
-      tableNovels: [],
+      tableNovels: variables.placeholderNovels,
       labelDanger: "uk-label uk-label-danger tableLabel",
       labelSuccess: "uk-label uk-label-success tableLabel",
       tableSearch: variables.tableSearch,
