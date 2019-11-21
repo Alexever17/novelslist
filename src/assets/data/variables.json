@@ -7,18 +7,29 @@
   },
   "tableSort": {
     "enabled": true,
-    "initialSortBy": { "field": "Date", "type": "desc" }
+    "initialSortBy": {
+      "field": "Date",
+      "type": "desc"
+    }
   },
   "tableSortMobile": {
     "enabled": true,
-    "initialSortBy": { "field": "Rank", "type": "desc" }
+    "initialSortBy": {
+      "field": "Rank",
+      "type": "desc"
+    }
   },
   "tablePagination": {
     "enabled": true,
     "mode": "pages",
     "perPage": 7,
     "position": "bottom",
-    "perPageDropdown": [7, 20, 50, 100],
+    "perPageDropdown": [
+      7,
+      20,
+      50,
+      100
+    ],
     "dropdownAllowAll": false,
     "setCurrentPage": 1,
     "nextLabel": "next",
@@ -33,7 +44,12 @@
     "mode": "records",
     "perPage": 7,
     "position": "bottom",
-    "perPageDropdown": [7, 20, 50, 100],
+    "perPageDropdown": [
+      7,
+      20,
+      50,
+      100
+    ],
     "dropdownAllowAll": false,
     "setCurrentPage": 1,
     "nextLabel": "next",
@@ -160,6 +176,52 @@
       "field": "Progress",
       "hidden": true,
       "sortable": false
+    }
+  ],
+  "placeholderNovels": [
+    {
+      "Title": "Loading something nice ...",
+      "Description": " ",
+      "Date": "01.01.1990",
+      "Origin": " ",
+      "Rank": 10,
+      "Link": " ",
+      "Picture": "https://via.placeholder.com/300x400/FFFFFF/808080?text=novelslist.com",
+      "Dropped": false,
+      "Progress": " "
+    },
+    {
+      "Title": "Loading something nice ...",
+      "Description": " ",
+      "Date": "01.01.1990",
+      "Origin": " ",
+      "Rank": 10,
+      "Link": " ",
+      "Picture": "https://via.placeholder.com/300x400/FFFFFF/808080?text=novelslist.com",
+      "Dropped": false,
+      "Progress": " "
+    },
+    {
+      "Title": "Loading something nice ...",
+      "Description": " ",
+      "Date": "01.01.1990",
+      "Origin": " ",
+      "Rank": 10,
+      "Link": " ",
+      "Picture": "https://via.placeholder.com/300x400/FFFFFF/808080?text=novelslist.com",
+      "Dropped": false,
+      "Progress": " "
+    },
+    {
+      "Title": "Loading something nice ...",
+      "Description": " ",
+      "Date": "01.01.1990",
+      "Origin": " ",
+      "Rank": 10,
+      "Link": " ",
+      "Picture": "https://via.placeholder.com/300x400/FFFFFF/808080?text=novelslist.com",
+      "Dropped": false,
+      "Progress": " "
     }
   ]
 }
