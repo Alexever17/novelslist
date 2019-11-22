@@ -1,27 +1,47 @@
 <template>
-  <div id="nav">
-    <div>
-      <div class="uk-position-relative">
-        <img src="../assets/images/danny-zjV8ptYgcEo-unsplash.7573259d.jpg" alt="a book picture" />
-        <div class="uk-position-top">
-          <nav class="uk-navbar-container uk-navbar-transparent" uk-navbar>
-            <div class="uk-navbar-center">
-              <ul class="uk-navbar-nav">
-                <li>
-                  <a href="#list" uk-scroll class="navbarLink">Full List</a>
-                </li>
-                <li class="uk-navbar-item uk-logo">
-                  <img src="../assets/images/logor.66ec5d99.png" alt id="centerlogo" />
-                </li>
-                <li>
-                  <a href="https://github.com/Alexever17" target="_blank" class="navbarLink">Creator</a>
-                </li>
-              </ul>
-            </div>
-          </nav>
+  <div>
+    <nav class="uk-navbar-container uk-margin" uk-navbar="mode: click" id="nav">
+      <div class="uk-navbar-left">
+        <ul class="uk-navbar-nav">
+          <li class="uk-navbar-item uk-logo">
+            <img src="../assets/images/logor.66ec5d99.png" alt id="centerlogo">
+          </li>
+          <li>
+            <a href="#list" uk-scroll class="navbarLink">Full List</a>
+          </li>
+          <li>
+            <a href="https://github.com/Alexever17" target="_blank" class="navbarLink">Creator</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <nav class="uk-navbar-container" uk-navbar="mode: click" id="navMobile">
+      <div class="uk-navbar-left">
+        <ul class="uk-navbar-nav">
+          <li class="uk-navbar-item uk-logo">
+            <img src="../assets/images/logor.66ec5d99.png" alt id="centerlogo">
+          </li>
+          <li>
+            <a href="#offcanvas-slide" class="navbarLink" uk-toggle>Menu</a>
+          </li>
+        </ul>
+        <div id="offcanvas-slide" uk-offcanvas>
+          <div class="uk-offcanvas-bar">
+            <ul class="uk-nav uk-nav-default">
+              <li class="uk-navbar-item uk-logo">
+                <img src="../assets/images/logo.png" alt id="centerlogo">
+              </li>
+              <li>
+                <a href="#list" uk-scroll class="navbarLink">Full List</a>
+              </li>
+              <li>
+                <a href="https://github.com/Alexever17" target="_blank" class="navbarLink">Creator</a>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
-    </div>
+    </nav>
   </div>
 </template>
 
@@ -34,15 +54,27 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="less">
+@import "../assets/less/main.less";
+.backgroundImg {
+  background-image: url("../assets/images/danny-zjV8ptYgcEo-unsplash.7573259d.jpg");
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover;
+}
 #nav {
   max-height: 250px;
+  margin-bottom: 1em;
+  .over1000();
+  .backgroundImg();
+}
+#navMobile {
+  .under1000();
+  .backgroundImg();
+  margin: 0 0 1em 0;
 }
 #centerlogo {
   min-height: 100px;
-  max-height: 200px;
-}
-#nav {
-  margin-bottom: 1em;
+  max-height: 150px;
 }
 .uk-navbar-nav > li:hover > a {
   color: #999;
@@ -59,7 +91,7 @@ export default {
     font-size: 100%;
   }
   #centerlogo {
-    max-height: 150px;
+    max-height: 50px;
   }
 }
 </style>

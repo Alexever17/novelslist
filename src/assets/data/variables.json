@@ -63,19 +63,19 @@
     {
       "label": "Picture",
       "field": "Picture",
-      "width": "90px",
+      "width": "94px",
       "sortable": false
     },
     {
       "label": "Title",
       "field": "Title",
-      "width": "250px"
+      "width": "180px"
     },
     {
       "label": "Rank",
       "field": "Rank",
       "type": "number",
-      "width": "35px"
+      "width": "30px"
     },
     {
       "label": "Added",
@@ -83,8 +83,7 @@
       "type": "date",
       "dateInputFormat": "dd.MM.yyyy",
       "dateOutputFormat": "dd.MM.yyyy",
-      "hidden": false,
-      "width": "110px"
+      "width": "80px"
     },
     {
       "label": "Description",
@@ -95,7 +94,8 @@
       "label": "Labels",
       "field": "Dropped",
       "type": "boolean",
-      "width": "55px"
+      "width": "55px",
+      "hidden": true
     },
     {
       "label": "Origin",
@@ -105,9 +105,9 @@
       "hidden": true
     },
     {
-      "label": "Link",
+      "label": "Info",
       "field": "Link",
-      "width": "70px",
+      "width": "94px",
       "sortable": false
     },
     {

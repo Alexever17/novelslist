@@ -1,4 +1,12 @@
 <template>
+<div>
+  <div class="uk-card uk-card-default uk-card-body border" id="tabsTitle">
+      <ul class="uk-flex-left" uk-tab>
+        <li class="uk-active">
+          <h2 class="tabsTitleH2">Newest Additions</h2>
+        </li>
+      </ul>
+    </div>
   <div
     class="uk-position-relative uk-light uk-slider uk-slider-container"
     uk-slider="autoplay: true; autoplay-interval: 12000; sets: true"
@@ -40,7 +48,6 @@
 
             <Modal
               :novel="novel"
-              :id="'modal' + modalIdMaker(novel.Title)"
               uk-modal
             />
           </div>
@@ -53,6 +60,7 @@
       class="uk-slider-nav uk-dotnav uk-flex-center uk-margin"
       id="dotnav"
     ></ul>
+  </div>
   </div>
 </template>
 
@@ -87,6 +95,21 @@ export default {
 <style scoped lang="less">
 @import "../assets/less/main.less";
 
+#tabsTitle {
+  display: flex;
+  padding: 20px 0 20px 0;
+  margin: 0em 2em;
+  justify-content: center;
+  .tabsTitleH2 {
+    margin: 0;
+    padding: 0;
+  }
+}
+.border {
+  border: 1px solid @borderColor;
+  border-width: 1px 1px 0px 1px;
+}
+
 #carousel {
   margin: 0em 2em 2em 2em;
   background: linear-gradient(
@@ -102,7 +125,7 @@ export default {
   text-align: center;
 }
 .carouselTitle {
-  margin: 5px 0;
+  margin: 5px 5px;
   height: 60px;
   vertical-align: middle;
   display: flex;

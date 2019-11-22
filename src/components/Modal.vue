@@ -1,6 +1,6 @@
 <template>
   <!-- This is the modal with the default close button -->
-  <div uk-modal>
+  <div uk-modal :id="'modal' + modalIdMaker(novel.Title)">
     <div class="uk-modal-dialog uk-modal-body uk-text-center">
       <button class="uk-modal-close-default" type="button" uk-close></button>
       <h2 class="uk-modal-title">{{novel.Title}}</h2>
@@ -65,6 +65,9 @@ export default {
     };
   },
   methods: {
+    modalIdMaker(input) {
+      return input.replace(/\W+/g, "");
+    },
     droppedToTextConverter(status) {
       if (status) {
         return "Dropped";

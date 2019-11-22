@@ -46,16 +46,17 @@
     >
       <template slot="table-row" slot-scope="props">
         <span v-if="props.column.field == 'Title'">
-          <h3>{{ props.row.Title }}</h3>
+          <h4>{{ props.row.Title }}</h4>
         </span>
         <span v-if="props.column.field == 'Description'">
           <ul uk-accordion>
             <li>
               <a class="uk-accordion-title" href="#">
-                <h3>Description</h3>
+                <h4>Description</h4>
+                <p class="tableP">{{ preview(props.row.Description) }}</p>
               </a>
               <div class="uk-accordion-content">
-                <p>{{ props.row.Description }}</p>
+                <p>{{ afterPreview(props.row.Description) }}</p>
               </div>
             </li>
           </ul>
@@ -64,8 +65,7 @@
           <span
             :class="props.row.Dropped ? labelDanger : labelSuccess"
             v-if="props.row.Dropped"
-            >Dropped</span
-          >
+          >Dropped</span>
           <span class="uk-label tableLabel">{{ props.row.Origin }}</span>
         </span>
         <span v-if="props.column.field == 'Origin'">
@@ -77,21 +77,21 @@
             :src="props.row.Picture"
             class="tablePicture"
             :alt="props.row.Title + ' Cover'"
-          />
-        </span>
-        <span v-if="props.column.field == 'Link'">
-          <a
-            rel="preconnect"
-            :href="props.row.Link"
-            class="uk-button uk-button-default"
-            >Link</a
           >
         </span>
+        <span v-if="props.column.field == 'Link'">
+          <Modal :novel="props.row" uk-modal/>
+          <a
+            class="uk-button uk-button-default tableInfo"
+            type="button"
+            :uk-toggle="'target: #' + 'modal' + modalIdMaker(props.row.Title)"
+          >More Info</a>
+        </span>
         <span v-if="props.column.field == 'Rank'">
-          <h3>{{ props.row.Rank }}</h3>
+          <h4>{{ props.row.Rank }}</h4>
         </span>
         <span v-if="props.column.field == 'Date'">
-          <h3>{{ props.row.Date }}</h3>
+          <h4>{{ props.row.Date }}</h4>
         </span>
       </template>
     </vue-good-table>
@@ -107,6 +107,19 @@
       <template slot="table-row" slot-scope="props">
         <span v-if="props.column.field == 'Title'">
           <h3>{{ props.row.Title }}</h3>
+          <div class="uk-flex uk-flex-between uk-flex-middle">
+            <div>
+              <h4 class="noMargin">Ranking: {{ props.row.Rank }}</h4>
+            </div>
+            <div>
+              <Modal :novel="props.row" uk-modal/>
+              <a
+                class="uk-button uk-button-default tableInfo"
+                type="button"
+                :uk-toggle="'target: #' + 'modal' + modalIdMaker(props.row.Title)"
+              >More Info</a>
+            </div>
+          </div>
         </span>
 
         <span v-if="props.column.field == 'Picture'">
@@ -115,7 +128,7 @@
             :src="props.row.Picture"
             class="tablePictureMobile"
             :alt="props.row.Title + ' Cover'"
-          />
+          >
         </span>
       </template>
     </vue-good-table>
@@ -126,17 +139,22 @@
 // import the styles
 import "../assets/less/table.css";
 import { VueGoodTable } from "vue-good-table";
+import Modal from "./Modal.vue";
 import variables from "../assets/data/variables.json";
 
 export default {
   name: "NovelsList",
   props: { novels: Array },
   components: {
-    VueGoodTable
+    VueGoodTable,
+    Modal
   },
   watch: {
     // whenever novels changes, this function will run
     novels: function(newVal, oldVal) {
+      for (let i = 0; i < newVal.length; i++) {
+        this.disableData[newVal[i].Title] = true;
+      }
       this.tableNovels = newVal;
     }
   },
@@ -145,6 +163,7 @@ export default {
       tableNovels: variables.placeholderNovels,
       labelDanger: "uk-label uk-label-danger tableLabel",
       labelSuccess: "uk-label uk-label-success tableLabel",
+      disableData: {},
       tableSearch: variables.tableSearch,
       tableSort: variables.tableSort,
       tableSortMobile: variables.tableSortMobile,
@@ -155,8 +174,42 @@ export default {
     };
   },
   methods: {
-    log() {
-      console.log("works");
+    modalIdMaker(input) {
+      return input.replace(/\W+/g, "");
+    },
+    preview(input) {
+      //gives back array [false or true, number where to cut]
+      let result = this.lengthChecker(input);
+
+      if (result[0]) {
+        return input;
+      } else {
+        return input.slice(0, input.indexOf(" ", result[1]));
+      }
+    },
+    afterPreview(input) {
+      //gives back array [false or true, number where to cut]
+      let result = this.lengthChecker(input);
+
+      if (result[0]) {
+        return null;
+      } else {
+        return input.slice(input.indexOf(" ", result[1]));
+      }
+    },
+    lengthChecker(input) {
+      let width = Math.max(
+        document.documentElement.clientWidth,
+        window.innerWidth || 0
+      );
+      let factor = Math.abs((-8 * width) / 1000 + 16);
+      let division = Math.round(width / factor);
+
+      if (input.length < division) {
+        return [true, 0];
+      } else {
+        return [false, division];
+      }
     },
     tabsClick(input) {
       if (input == "full") {
@@ -190,20 +243,25 @@ export default {
 }
 
 #table {
-  .over1200();
+  .over1000();
 }
 
 #tableMobile {
-  .under1200();
+  .under1000();
 }
 
 .tabsBorder {
-  padding: 10px 0 0 0;
+  padding: 10px 0 10px 0;
   border: 1px solid @borderColor;
   border-width: 1px 1px 0px 1px;
 }
 
+.noMargin {
+  margin: 0;
+}
+
 #tabsTitle {
+  padding: 20px 0 20px 0;
   display: flex;
   justify-content: center;
   .tabsTitleH2 {
@@ -223,23 +281,38 @@ export default {
 }
 
 .uk-tab {
-  & > * {
-    margin-bottom: 10px;
-  }
   & > * > a {
     border: 0px solid transparent;
-    font-size: 150%;
+    font-size: 100%;
   }
+}
+
+ul.uk-accordion {
+  margin: 0;
+}
+
+.uk-accordion-content {
+  margin: 0;
+}
+
+.tableInfo {
+  padding: 3px 10px;
+}
+
+.tableP {
+  font-size: 72.75%;
+  margin-bottom: 0;
 }
 
 @media only screen and (max-width: 1200px) {
   .uk-tab > * > a {
-    font-size: 110%;
+    font-size: 100%;
   }
 }
 
 .tablePicture {
-  height: 150px;
+  height: 140px;
+  width: 105px;
 }
 
 .tablePictureMobile {

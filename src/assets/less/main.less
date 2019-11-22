@@ -19,19 +19,19 @@
 @desktop-strict:    ~"only screen and (min-width: @{screen-md-min}) and (max-width: @{screen-md-max})";
 @large:             ~"only screen and (min-width: @{screen-lg-min})";
 
-.over1200 {
-    @media only screen and (min-width: @screen-lg-min){
+.over1000 {
+    @media only screen and (min-width: @screen-md-min){
         display: inherit;
     }
-    @media only screen and (max-width: @screen-lg-min){
+    @media only screen and (max-width: @screen-md-min){
         display: none;
     }
 }
-.under1200 {
-    @media only screen and (min-width: @screen-lg-min){
+.under1000 {
+    @media only screen and (min-width: @screen-md-min){
         display: none;
     }
-    @media only screen and (max-width: @screen-lg-min){
+    @media only screen and (max-width: @screen-md-min){
         display: inherit;
     }
 }
