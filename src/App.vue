@@ -1,12 +1,19 @@
 <template>
   <div id="app">
-    <Nav />
-    <Carousel :novels="novels" />
-    <Explainer :novels="novels" />
-    <NovelsList :novels="novels" />
-    <div class="margin uk-container-expand uk-flex uk-flex-center">
-        <a href="#" style="uk-button uk-button-default" id="upButton" uk-scroll uk-totop> Scroll up</a>
-    </div>
+    <main>
+      <Nav />
+      <Carousel :novels="novels" />
+      <Explainer :novels="novels" />
+      <NovelsList :novels="novels" />
+    </main>
+    <a
+      href="#"
+      style="uk-button uk-button-default"
+      id="upButton"
+      uk-scroll
+      uk-totop
+      >Scroll Up</a
+    >
   </div>
 </template>
 
@@ -105,18 +112,27 @@ export default {
 #app {
   background-image: url("assets/images/pipes.png");
   background-size: 8em 8em;
-  padding-bottom: 5em;
+  padding-bottom: 1.5em;
 }
 
-.margin {
-  margin: 2em 2em;
+main {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-wrap: wrap;
 }
 
 #upButton {
-  background-color: fadeout(@mainColor, 15%);
+  position: relative;
+  margin-left: ~"calc(50% - 1em)";
+  margin-top: 1em;
+  width: 4em;
+  height: 1.5em;
+  line-height: 1.5em;
+  text-align: center;
+  background-color: fadeout(@mainColor, 30%);
   color: white;
   border: 1px solid @borderColor;
-  padding: 0.7em 1em;
   font-size: 150%;
   & svg {
     display: none;

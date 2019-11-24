@@ -1,7 +1,7 @@
 <template>
   <div id="explain" class="uk-flex uk-flex-center">
     <div
-      class="uk-child-width-1-2@m uk-child-width-1-2@l uk-grid-small uk-grid-match uk-flex-center uk-width-1-1"
+      class="uk-child-width-1-2@m uk-child-width-1-2@l uk-grid-medium uk-grid-match uk-flex-center uk-width-1-1"
       uk-grid
     >
       <div>
@@ -150,15 +150,18 @@ export default {
 @import "../assets/less/main.less";
 
 #explain {
-  margin: 0em 1.5em 1.5em 1.5em;
-  max-width: 1600px;
+  width: 100%;
+  margin: 2em 2em 0em 2em;
+  max-width: 1830px;
 }
+
 .borderAddition {
   border: 1px solid @borderColor;
 }
-@media screen and (min-width: 1600px) {
-  #explain {
-    margin: 0em auto 2em auto;
-  }
+
+[class*='uk-width'] {
+  width: unset;
+  max-width: unset;
 }
+
 </style>

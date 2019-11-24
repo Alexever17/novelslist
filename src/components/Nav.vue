@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <nav class="uk-navbar-container uk-margin" uk-navbar="mode: click" id="nav">
+  <div id="navContainer">
+    <nav class="uk-navbar-container" uk-navbar="mode: click" id="nav">
       <div class="uk-navbar-left">
         <ul class="uk-navbar-nav">
           <li class="uk-navbar-item uk-logo">
@@ -55,6 +55,9 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="less">
 @import "../assets/less/main.less";
+#navContainer {
+  width: 100%;
+}
 .backgroundImg {
   background-image: url("../assets/images/danny-zjV8ptYgcEo-unsplash.7573259d.jpg");
   background-position: center; /* Center the image */
@@ -63,7 +66,7 @@ export default {
 }
 #nav {
   max-height: 250px;
-  margin-bottom: 1em;
+  padding-left: 1em;
   .over1000();
   .backgroundImg();
 }

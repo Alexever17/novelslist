@@ -239,7 +239,8 @@ export default {
 @import "../assets/less/main.less";
 
 #list {
-  margin: 0em 2em;
+  margin: 2em 2em 0em 2em;
+  max-width: 1800px;
 }
 
 #table {
