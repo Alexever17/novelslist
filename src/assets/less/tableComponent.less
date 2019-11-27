@@ -1,0 +1,96 @@
+.noMargin {
+  margin: 0;
+}
+
+#list {
+  margin: 2em 2em 0em 2em;
+  max-width: 1800px;
+}
+
+#table {
+  .over1000();
+}
+
+#tableMobile {
+  .under1000();
+}
+
+.tabsBorder {
+  padding: 10px 0 10px 0;
+  border: 1px solid @borderColor;
+  border-width: 1px 1px 0px 1px;
+}
+
+#listTitle {
+  padding: 20px 0 20px 0;
+  display: flex;
+  justify-content: center;
+  .tabsTitleH2 {
+    margin: 0;
+  }
+}
+
+#listNavUl {
+  margin-bottom: 0;
+  &::before {
+    border-bottom-width: 0;
+  }
+  & > .uk-active > a {
+    background-color: @mainColorLight;
+    color: white;
+  }
+}
+
+.uk-tab {
+  & > * > a {
+    border: 0px solid transparent;
+    font-size: 100%;
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  .uk-tab > * > a {
+    font-size: 100%;
+  }
+}
+
+ul.uk-accordion {
+  margin: 0;
+}
+
+.uk-accordion-content {
+  margin: 0;
+}
+
+.tableInfo {
+  padding: 3px 10px;
+}
+
+@media only screen and (max-width: 400px) {
+  .mobileFlexChange {
+    flex-direction: column;
+  }
+}
+
+.tableP {
+  font-size: 16px;
+  line-height: 22px;
+  margin-bottom: 0;
+}
+
+.fontColorChange {
+  color: rgb(34, 34, 34);
+}
+
+.tablePicture {
+  height: 140px;
+  width: 105px;
+}
+
+.tablePictureMobile {
+  height: 100px;
+}
+
+.tableLabel {
+  font-size: 110%;
+}

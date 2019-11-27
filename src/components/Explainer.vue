@@ -1,13 +1,16 @@
 <template>
-  <div id="explain" class="uk-flex uk-flex-center">
+  <div id="explainer" class="uk-flex uk-flex-center">
     <div
       class="uk-child-width-1-2@m uk-child-width-1-2@l uk-grid-medium uk-grid-match uk-flex-center uk-width-1-1"
       uk-grid
     >
       <div>
-        <div class="uk-card uk-card-default uk-card-body borderAddition">
+        <div class="uk-card uk-card-default uk-card-body border">
           <article class="uk-comment">
-            <header class="uk-comment-header uk-grid-medium uk-flex-middle uk-grid" uk-grid>
+            <header
+              class="uk-comment-header uk-grid-medium uk-flex-middle uk-grid"
+              uk-grid
+            >
               <div class="uk-width-auto uk-first-column">
                 <!-- admins profile pic -->
                 <img
@@ -16,14 +19,16 @@
                   width="80"
                   height="80"
                   alt
-                >
+                />
               </div>
               <!-- the message itself -->
               <div class="uk-width-expand">
                 <h4 class="uk-comment-title uk-margin-remove">
                   <a class="uk-link-reset" href="#">Alex</a>
                 </h4>
-                <ul class="uk-comment-meta uk-subnav uk-subnav-divider uk-margin-remove-top">
+                <ul
+                  class="uk-comment-meta uk-subnav uk-subnav-divider uk-margin-remove-top"
+                >
                   <li>
                     <a href="#" id="timeStamp">{{ timeNumber() }} days ago</a>
                   </li>
@@ -35,18 +40,21 @@
               <p>
                 I love reading web novels and want to share my passion with you.
                 On this website you can find all novels I ever read.
-                <br>
-                <br>Sometimes it is difficult to find the most interesting novels,
-                because many are translated by fans and aren't released
-                officially. There are multiple sources to find novels but the
-                two most used are novelupdates.com and webnovel.com.
-                Novelupdates is a website which tracks all translated novels and
-                has their information. There you can find the licensing
-                information and where you can read it. Webnovel meanwhile is the
-                biggest plattform for translated and original novels.
+
+                <span class="longExplainText">
+                  <br />Sometimes it is difficult to find the most interesting
+                  novels, because many are translated by fans and aren't
+                  released officially. There are multiple sources to find novels
+                  but the two most used are novelupdates.com and webnovel.com.
+                  Novelupdates is a website which tracks all translated novels
+                  and has their information. There you can find the licensing
+                  information and where you can read it. Webnovel meanwhile is
+                  the biggest plattform for translated and original
+                  novels.</span
+                >
               </p>
               <a href="https://novelupdates.com">Novel Updates</a>
-              <br>
+              <br />
               <a href="https://webnovel.com">Webnovel</a>
             </div>
           </article>
@@ -55,8 +63,10 @@
       <div>
         <div class="uk-card uk-card-default uk-card-body borderAddition">
           <h3 class="uk-card-title">Database Information</h3>
-          <p>Click on a category to disable it from the chart or add it again.</p>
-          <PieChart v-if="loaded" :options="options" :chartdata="chartdata"/>
+          <p>
+            Click on a category to disable it from the chart or add it again.
+          </p>
+          <PieChart v-if="loaded" :options="options" :chartdata="chartdata" />
         </div>
       </div>
     </div>
@@ -76,7 +86,15 @@ export default {
       var c = this.groupBy(newVal, "Origin");
       let dropped = this.groupBy(newVal, "Dropped");
       let sumDropped = dropped.true[0];
-      let sumCategory = [c.chinese[0], c.japanese[0], c.korean[0], c.webnovel[0], c.book[0], c.other[0], sumDropped]
+      let sumCategory = [
+        c.chinese[0],
+        c.japanese[0],
+        c.korean[0],
+        c.webnovel[0],
+        c.book[0],
+        c.other[0],
+        sumDropped
+      ];
 
       this.chartdata = {
         labels: this.chartlabels,
@@ -121,18 +139,18 @@ export default {
       return days;
     },
     groupBy(objectArray, property) {
-        return objectArray.reduce(function(acc, obj) {
-          var key = obj[property];
-          if (!acc[key]) {
-            acc[key] = [];
-          }
-          if (acc[key][0]) {
-            acc[key][0]++;
-          } else {
-            acc[key].push(1);
-          }
-          return acc;
-        }, {});
+      return objectArray.reduce(function(acc, obj) {
+        var key = obj[property];
+        if (!acc[key]) {
+          acc[key] = [];
+        }
+        if (acc[key][0]) {
+          acc[key][0]++;
+        } else {
+          acc[key].push(1);
+        }
+        return acc;
+      }, {});
     },
     colorCreator() {
       let output = [];
@@ -149,19 +167,23 @@ export default {
 <style scoped lang="less">
 @import "../assets/less/main.less";
 
-#explain {
+#explainer {
   width: 100%;
   margin: 2em 2em 0em 2em;
-  max-width: 1830px;
+  max-width: 1800px;
 }
 
-.borderAddition {
+.border {
   border: 1px solid @borderColor;
 }
 
-[class*='uk-width'] {
+//enables max-width for the explainer component, otherwise a padding form an inside component is interfearing
+[class*="uk-width"] {
   width: unset;
   max-width: unset;
 }
 
+.longExplainText {
+  .over1000();
+}
 </style>

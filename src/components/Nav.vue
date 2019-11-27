@@ -79,6 +79,8 @@ export default {
   min-height: 100px;
   max-height: 150px;
 }
+//because of the picture the li elements are stretched large, so hover responds even when not directly on the a element
+//this fixes it
 .uk-navbar-nav > li:hover > a {
   color: #999;
 }

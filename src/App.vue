@@ -124,7 +124,7 @@ main {
 
 #upButton {
   position: relative;
-  margin-left: ~"calc(50% - 1em)";
+  margin-left: ~"calc(50% - 2em)";
   margin-top: 1em;
   width: 4em;
   height: 1.5em;

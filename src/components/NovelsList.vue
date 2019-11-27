@@ -1,14 +1,14 @@
 <template>
   <div id="list">
-    <div class="uk-card uk-card-default uk-card-body tabsBorder" id="tabsTitle">
+    <div class="uk-card uk-card-default uk-card-body tabsBorder" id="listTitle">
       <ul class="uk-flex-left" uk-tab>
         <li class="uk-active">
           <h2 class="tabsTitleH2">Novel Database</h2>
         </li>
       </ul>
     </div>
-    <div class="uk-card uk-card-default uk-card-body tabsBorder" id="tabsOuter">
-      <ul class="uk-flex-left" uk-tab id="tabs">
+    <div class="uk-card uk-card-default uk-card-body tabsBorder" id="listNav">
+      <ul class="uk-flex-left" uk-tab id="tabNavUl">
         <li class="uk-active">
           <a href="#" @click="tabsClick('full')">Full List</a>
         </li>
@@ -49,7 +49,11 @@
           <h4>{{ props.row.Title }}</h4>
         </span>
         <span v-if="props.column.field == 'Description'">
-          <ul uk-accordion>
+          <div v-if="lengthChecker(props.row.Description)[0]">
+            <h4>Description</h4>
+            <p class="tableP fontColorChange">{{ props.row.Description }}</p>
+          </div>
+          <ul v-else uk-accordion>
             <li>
               <a class="uk-accordion-title" href="#">
                 <h4>Description</h4>
@@ -65,7 +69,8 @@
           <span
             :class="props.row.Dropped ? labelDanger : labelSuccess"
             v-if="props.row.Dropped"
-          >Dropped</span>
+            >Dropped</span
+          >
           <span class="uk-label tableLabel">{{ props.row.Origin }}</span>
         </span>
         <span v-if="props.column.field == 'Origin'">
@@ -77,15 +82,16 @@
             :src="props.row.Picture"
             class="tablePicture"
             :alt="props.row.Title + ' Cover'"
-          >
+          />
         </span>
         <span v-if="props.column.field == 'Link'">
-          <Modal :novel="props.row" uk-modal/>
+          <Modal :novel="props.row" uk-modal />
           <a
             class="uk-button uk-button-default tableInfo"
             type="button"
             :uk-toggle="'target: #' + 'modal' + modalIdMaker(props.row.Title)"
-          >More Info</a>
+            >More Info</a
+          >
         </span>
         <span v-if="props.column.field == 'Rank'">
           <h4>{{ props.row.Rank }}</h4>
@@ -107,17 +113,20 @@
       <template slot="table-row" slot-scope="props">
         <span v-if="props.column.field == 'Title'">
           <h3>{{ props.row.Title }}</h3>
-          <div class="uk-flex uk-flex-between uk-flex-middle">
+          <div class="uk-flex uk-flex-between uk-flex-middle mobileFlexChange">
             <div>
               <h4 class="noMargin">Ranking: {{ props.row.Rank }}</h4>
             </div>
             <div>
-              <Modal :novel="props.row" uk-modal/>
+              <Modal :novel="props.row" uk-modal />
               <a
                 class="uk-button uk-button-default tableInfo"
                 type="button"
-                :uk-toggle="'target: #' + 'modal' + modalIdMaker(props.row.Title)"
-              >More Info</a>
+                :uk-toggle="
+                  'target: #' + 'modal' + modalIdMaker(props.row.Title)
+                "
+                >More Info</a
+              >
             </div>
           </div>
         </span>
@@ -128,7 +137,7 @@
             :src="props.row.Picture"
             class="tablePictureMobile"
             :alt="props.row.Title + ' Cover'"
-          >
+          />
         </span>
       </template>
     </vue-good-table>
@@ -184,7 +193,13 @@ export default {
       if (result[0]) {
         return input;
       } else {
-        return input.slice(0, input.indexOf(" ", result[1]));
+        let operation = input.indexOf(". ", result[1] - 10);
+        if (operation == -1) {
+          return input;
+        } else {
+          return input.slice(0, input.indexOf(". ", result[1] - 10) + 2);
+        }
+        
       }
     },
     afterPreview(input) {
@@ -192,9 +207,14 @@ export default {
       let result = this.lengthChecker(input);
 
       if (result[0]) {
-        return null;
+        return "---";
       } else {
-        return input.slice(input.indexOf(" ", result[1]));
+        let operation = input.indexOf(". ", result[1] - 10);
+        if (operation == -1) {
+          return input;
+        } else {
+          return input.slice(input.indexOf(". ", result[1] - 10) + 2);
+        }
       }
     },
     lengthChecker(input) {
@@ -237,90 +257,5 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="less">
 @import "../assets/less/main.less";
-
-#list {
-  margin: 2em 2em 0em 2em;
-  max-width: 1800px;
-}
-
-#table {
-  .over1000();
-}
-
-#tableMobile {
-  .under1000();
-}
-
-.tabsBorder {
-  padding: 10px 0 10px 0;
-  border: 1px solid @borderColor;
-  border-width: 1px 1px 0px 1px;
-}
-
-.noMargin {
-  margin: 0;
-}
-
-#tabsTitle {
-  padding: 20px 0 20px 0;
-  display: flex;
-  justify-content: center;
-  .tabsTitleH2 {
-    margin: 0;
-  }
-}
-
-#tabs {
-  margin-bottom: 0;
-  &::before {
-    border-bottom-width: 0;
-  }
-  & > .uk-active > a {
-    background-color: @mainColorLight;
-    color: white;
-  }
-}
-
-.uk-tab {
-  & > * > a {
-    border: 0px solid transparent;
-    font-size: 100%;
-  }
-}
-
-ul.uk-accordion {
-  margin: 0;
-}
-
-.uk-accordion-content {
-  margin: 0;
-}
-
-.tableInfo {
-  padding: 3px 10px;
-}
-
-.tableP {
-  font-size: 72.75%;
-  margin-bottom: 0;
-}
-
-@media only screen and (max-width: 1200px) {
-  .uk-tab > * > a {
-    font-size: 100%;
-  }
-}
-
-.tablePicture {
-  height: 140px;
-  width: 105px;
-}
-
-.tablePictureMobile {
-  height: 100px;
-}
-
-.tableLabel {
-  font-size: 110%;
-}
+@import "../assets/less/tableComponent.less";
 </style>
