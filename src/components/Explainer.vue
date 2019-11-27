@@ -61,7 +61,7 @@
         </div>
       </div>
       <div>
-        <div class="uk-card uk-card-default uk-card-body borderAddition">
+        <div class="uk-card uk-card-default uk-card-body border">
           <h3 class="uk-card-title">Database Information</h3>
           <p>
             Click on a category to disable it from the chart or add it again.
@@ -171,6 +171,12 @@ export default {
   width: 100%;
   margin: 2em 2em 0em 2em;
   max-width: 1800px;
+}
+
+@media only screen and (max-width: 480px) {
+  #explainer {
+    margin: 2em 0em 0em 0em;
+  }
 }
 
 .border {

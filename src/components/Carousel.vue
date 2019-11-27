@@ -100,6 +100,13 @@ export default {
   box-sizing: border-box;
 }
 
+@media only screen and (max-width: 480px) {
+  #carouselContainer {
+    padding: 0em 0em;
+    margin: 2em 0em 0em 0em;
+  }
+}
+
 #tabsTitle {
   display: flex;
   padding: 20px 0 20px 0;

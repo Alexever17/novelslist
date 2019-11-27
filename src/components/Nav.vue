@@ -73,7 +73,6 @@ export default {
 #navMobile {
   .under1000();
   .backgroundImg();
-  margin: 0 0 1em 0;
 }
 #centerlogo {
   min-height: 100px;
