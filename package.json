@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "chart.js": "^2.9.3",
+    "color-blend": "^2.0.8",
     "core-js": "^3.4.1",
     "firebase": "^7.3.0",
     "random-color": "^1.0.1",

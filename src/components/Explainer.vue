@@ -70,6 +70,7 @@
 <script>
 import PieChart from "./PieChart.vue";
 import randomColor from "random-color";
+import { normal } from "color-blend";
 
 export default {
   name: "Explainer",
@@ -178,9 +179,13 @@ export default {
     },
     colorCreator() {
       let output = [];
+      let themeColor = { r: 57, g: 0, b: 90, a: 0.55 };
       for (let i = 0; i < 7; i++) {
-        output[i] = randomColor(0.4, 0.86).rgbString();
-      }
+        let random = randomColor(0.4, 0.86).rgbaString();
+        let generatedColor = { r: random.slice(5,8), g: random.slice(10,13), b: random.slice(16,18), a: 0.5 };
+        let mixed = normal(generatedColor, themeColor)
+        output[i] = `rgba(${mixed.r}, ${mixed.g}, ${mixed.b}, .65)`;
+      }      
       return output;
     }
   }
