@@ -25,13 +25,13 @@
           <a href="#" @click="tabsClick('webnovel')">Webnovel Originals</a>
         </li>
         <li>
+          <a href="#" @click="tabsClick('other')">Other Originals</a>
+        </li>
+        <li>
           <a href="#" @click="tabsClick('book')">Traditional Books</a>
         </li>
         <li>
-          <a href="#" @click="tabsClick('other')">Others</a>
-        </li>
-        <li>
-          <a href="#" @click="tabsClickDropped()">Dropped</a>
+          <a href="#" @click="tabsClickDropped()">Stopped Reading (Dropped)</a>
         </li>
       </ul>
     </div>
