@@ -14,6 +14,9 @@
       uk-totop
       >Scroll Up</a
     >
+    <footer>
+    <cookie-law theme="dark-lime"></cookie-law>
+  </footer>
   </div>
 </template>
 
@@ -21,6 +24,7 @@
 import UIkit from "uikit";
 import Icons from "uikit/dist/js/uikit-icons";
 UIkit.use(Icons);
+import CookieLaw from 'vue-cookie-law'
 import Nav from "./components/Nav.vue";
 import Explainer from "./components/Explainer.vue";
 import Carousel from "./components/Carousel.vue";
@@ -60,7 +64,8 @@ export default {
     Nav,
     Explainer,
     Carousel,
-    NovelsList
+    NovelsList,
+    CookieLaw
   },
   data() {
     return {
@@ -137,5 +142,9 @@ main {
   & svg {
     display: none;
   }
+}
+
+.Cookie__button {
+  background: @mainColor !important;
 }
 </style>
