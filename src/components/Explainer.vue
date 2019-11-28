@@ -7,10 +7,7 @@
       <div>
         <div class="uk-card uk-card-default uk-card-body border">
           <article class="uk-comment">
-            <header
-              class="uk-comment-header uk-grid-medium uk-flex-middle uk-grid"
-              uk-grid
-            >
+            <header class="uk-comment-header uk-grid-medium uk-flex-middle uk-grid" uk-grid>
               <div class="uk-width-auto uk-first-column">
                 <!-- admins profile pic -->
                 <img
@@ -19,16 +16,14 @@
                   width="80"
                   height="80"
                   alt
-                />
+                >
               </div>
               <!-- the message itself -->
               <div class="uk-width-expand">
                 <h4 class="uk-comment-title uk-margin-remove">
                   <a class="uk-link-reset" href="#">Alex</a>
                 </h4>
-                <ul
-                  class="uk-comment-meta uk-subnav uk-subnav-divider uk-margin-remove-top"
-                >
+                <ul class="uk-comment-meta uk-subnav uk-subnav-divider uk-margin-remove-top">
                   <li>
                     <a href="#" id="timeStamp">{{ timeNumber() }} days ago</a>
                   </li>
@@ -40,9 +35,10 @@
               <p>
                 I love reading web novels and want to share my passion with you.
                 On this website you can find all novels I ever read.
-
-                <span class="longExplainText">
-                  <br />Sometimes it is difficult to find the most interesting
+                <span
+                  class="longExplainText"
+                >
+                  <br>Sometimes it is difficult to find the most interesting
                   novels, because many are translated by fans and aren't
                   released officially. There are multiple sources to find novels
                   but the two most used are novelupdates.com and webnovel.com.
@@ -50,11 +46,11 @@
                   and has their information. There you can find the licensing
                   information and where you can read it. Webnovel meanwhile is
                   the biggest plattform for translated and original
-                  novels.</span
-                >
+                  novels.
+                </span>
               </p>
               <a href="https://novelupdates.com">Novel Updates</a>
-              <br />
+              <br>
               <a href="https://webnovel.com">Webnovel</a>
             </div>
           </article>
@@ -63,10 +59,8 @@
       <div>
         <div class="uk-card uk-card-default uk-card-body border">
           <h3 class="uk-card-title">Database Information</h3>
-          <p>
-            Click on a category to disable it from the chart or add it again.
-          </p>
-          <PieChart v-if="loaded" :options="options" :chartdata="chartdata" />
+          <p>Click on a category to disable it from the chart or add it again.</p>
+          <PieChart v-if="loaded" :options="options" :chartdata="chartdata"/>
         </div>
       </div>
     </div>
@@ -83,18 +77,7 @@ export default {
   watch: {
     // whenever novels changes, this function will run
     novels: function(newVal, oldVal) {
-      var c = this.groupBy(newVal, "Origin");
-      let dropped = this.groupBy(newVal, "Dropped");
-      let sumDropped = dropped.true[0];
-      let sumCategory = [
-        c.chinese[0],
-        c.japanese[0],
-        c.korean[0],
-        c.webnovel[0],
-        c.book[0],
-        c.other[0],
-        sumDropped
-      ];
+      let sumCategory = this.groupingNovels(newVal);
 
       this.chartdata = {
         labels: this.chartlabels,
@@ -106,6 +89,7 @@ export default {
           }
         ]
       };
+
       this.loaded = true;
     }
   },
@@ -138,6 +122,23 @@ export default {
       let days = Math.round((date2 - date1) / 1000 / 60 / 60 / 24);
       return days;
     },
+    groupingNovels(input) {
+      var c = this.groupBy(input, "Origin");
+      let otherEntries = this.nonMainCategoriesCounter(c);
+
+      let dropped = this.groupBy(input, "Dropped");
+      let sumDropped = dropped.true[0];
+
+      return [
+        c.chinese[0],
+        c.japanese[0],
+        c.korean[0],
+        c.webnovel[0],
+        c.book[0],
+        otherEntries,
+        sumDropped
+      ];
+    },
     groupBy(objectArray, property) {
       return objectArray.reduce(function(acc, obj) {
         var key = obj[property];
@@ -151,6 +152,29 @@ export default {
         }
         return acc;
       }, {});
+    },
+    nonMainCategoriesCounter(c) {
+      let result = 0;
+      let cKeys = Object.keys(c);
+      let otherKeys = [];
+
+      for (let i = 0; i < cKeys.length; i++) {
+        if (
+          cKeys[i] != "chinese" &&
+          cKeys[i] != "korean" &&
+          cKeys[i] != "japanese" &&
+          cKeys[i] != "webnovel" &&
+          cKeys[i] != "book"
+        ) {
+          otherKeys.push(cKeys[i]);
+        }
+      }
+
+      for (let y = 0; y < otherKeys.length; y++) {
+        result += c[otherKeys[y]][0];
+      }
+
+      return result;
     },
     colorCreator() {
       let output = [];
