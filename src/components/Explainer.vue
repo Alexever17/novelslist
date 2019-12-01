@@ -25,7 +25,7 @@
                 </h4>
                 <ul class="uk-comment-meta uk-subnav uk-subnav-divider uk-margin-remove-top">
                   <li>
-                    <span>Hobby web dev, reader of novels</span>
+                    <span>Reader of novels</span>
                   </li>
                 </ul>
               </div>

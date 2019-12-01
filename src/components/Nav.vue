@@ -21,8 +21,10 @@
           <li class="uk-navbar-item uk-logo">
             <img src="../assets/images/logor.66ec5d99.png" alt id="centerlogo">
           </li>
-          <li>
-            <a href="#offcanvas-slide" class="navbarLink" uk-toggle>Menu</a>
+        </ul>
+        <ul class="uk-navbar-nav uk-position-right">
+          <li class="uk-flex uk-flex-center uk-flex-middle uk-navbar-item">
+            <button href="#offcanvas-slide" class="navbarLink uk-button uk-button-default mainColorBackground" uk-toggle>Menu</button>
           </li>
         </ul>
         <div id="offcanvas-slide" uk-offcanvas>
@@ -74,6 +76,12 @@ export default {
   .under1000();
   .backgroundImg();
 }
+
+.mainColorBackground, .mainColorBackground:hover, .mainColorBackground:focus {
+  background-color: @mainColor;
+  color: white;
+}
+
 #centerlogo {
   min-height: 100px;
   max-height: 120px;
