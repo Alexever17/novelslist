@@ -1,24 +1,16 @@
 @mainColor: rgb(57, 0, 90);
+
 @mainColorLight: fadeout(@mainColor, 40%);
+
 @borderColor: #4d4e5234;
 
+//Breakpoint from uikit
 @screen-xs-min:     480px;
 @screen-sm-min:     768px;
 @screen-md-min:     992px;
 @screen-lg-min:     1200px;
 
-@screen-xs-max:     (@screen-sm-min - 1);
-@screen-sm-max:     (@screen-md-min - 1);
-@screen-md-max:     (@screen-lg-min - 1);
-
-@phone:             ~"only screen and (max-width: @{screen-xs-min})";
-@phone-strict:      ~"only screen and (min-width: @{screen-xs-min}) and (max-width: @{screen-xs-max})";
-@tablet:            ~"only screen and (min-width: @{screen-sm-min})";
-@tablet-strict:     ~"only screen and (min-width: @{screen-sm-min}) and (max-width: @{screen-sm-max})";
-@desktop:           ~"only screen and (min-width: @{screen-md-min})";
-@desktop-strict:    ~"only screen and (min-width: @{screen-md-min}) and (max-width: @{screen-md-max})";
-@large:             ~"only screen and (min-width: @{screen-lg-min})";
-
+//function to hide mobile components like the mobile version of the table
 .over1000 {
     @media only screen and (min-width: @screen-md-min){
         display: inherit;
@@ -27,6 +19,8 @@
         display: none;
     }
 }
+
+//function to hide the desktop versions of components
 .under1000 {
     @media only screen and (min-width: @screen-md-min){
         display: none;
@@ -36,12 +30,14 @@
     }
 }
 
+//fix for the footer section of the table
 .vgt-wrap__footer {
     display: flex;
     justify-content: space-around;
     align-items: center;
 }
 
+//fix for the footer section of the table
 .vgt-clearfix::after {
     display: none;
 }

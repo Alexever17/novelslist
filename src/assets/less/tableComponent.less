@@ -2,6 +2,7 @@
   margin: 0;
 }
 
+//the container for the table element
 #list {
   margin: 2em 2em 0em 2em;
   max-width: 1800px;
@@ -13,20 +14,26 @@
   }
 }
 
+//there are 2 versions of the table, a mobile and a desktop one
+//this hides and unhides the appropriate one
 #table {
   .over1000();
 }
 
+//there are 2 versions of the table, a mobile and a desktop one
+//this hides and unhides the appropriate one
 #tableMobile {
   .under1000();
 }
 
+//the borders for the title of the component
 .tabsBorder {
   padding: 10px 0 10px 0;
   border: 1px solid @borderColor;
   border-width: 1px 1px 0px 1px;
 }
 
+//title component of the table
 #listTitle {
   padding: 20px 0 20px 0;
   display: flex;
@@ -47,6 +54,7 @@
   }
 }
 
+//uk-tab is a uikit class
 .uk-tab {
   & > * > a {
     border: 0px solid transparent;
@@ -60,6 +68,7 @@
   }
 }
 
+//uikit element
 ul.uk-accordion {
   margin: 0;
 }
@@ -68,10 +77,12 @@ ul.uk-accordion {
   margin: 0;
 }
 
+//the button to open the modal in the table
 .tableInfo {
   padding: 3px 10px;
 }
 
+//mobile fix for the ranking and modal button in the mobile version of the table
 @media only screen and (max-width: 400px) {
   .mobileFlexChange {
     & h4 {
@@ -91,25 +102,30 @@ ul.uk-accordion {
   }
 }
 
+//some changes ot the p elements in the table
 .tableP {
   font-size: 16px;
   line-height: 22px;
   margin-bottom: 0;
 }
 
+//fix for the description text in the table
 .fontColorChange {
   color: rgb(34, 34, 34);
 }
 
+//the small picture on the left in the table
 .tablePicture {
   height: 140px;
   width: 105px;
 }
 
+//mobile picture
 .tablePictureMobile {
   height: 100px;
 }
 
+//currently disabled css for labels in the tables which are hidden right now
 .tableLabel {
   font-size: 110%;
 }
