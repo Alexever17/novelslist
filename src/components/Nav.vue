@@ -24,7 +24,7 @@
         </ul>
         <ul class="uk-navbar-nav uk-position-right">
           <li class="uk-flex uk-flex-center uk-flex-middle uk-navbar-item">
-            <button href="#offcanvas-slide" class="navbarLink uk-button uk-button-default mainColorBackground" uk-toggle>Menu</button>
+            <button href="#offcanvas-slide" class="navbarLink uk-button uk-button-primary mainColorBackground" uk-toggle>Menu</button>
           </li>
         </ul>
         <div id="offcanvas-slide" uk-offcanvas>
@@ -78,8 +78,14 @@ export default {
 }
 
 .mainColorBackground, .mainColorBackground:hover, .mainColorBackground:focus {
+  padding: 0px 30px;
   background-color: @mainColor;
+  border-color: rgb(172, 172, 172);
   color: white;
+}
+
+.navbarLink {
+  font-size: 150%;
 }
 
 #centerlogo {
@@ -95,9 +101,7 @@ export default {
 .uk-navbar-nav > li > a:focus {
   color: #666;
 }
-.navbarLink {
-  font-size: 200%;
-}
+
 @media screen and (max-width: 900px) {
   .navbarLink {
     font-size: 100%;
