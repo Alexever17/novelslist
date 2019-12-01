@@ -179,10 +179,10 @@ export default {
     },
     colorCreator() {
       let output = [];
-      let themeColor = { r: 57, g: 0, b: 90, a: 0.55 };
+      let themeColor = { r: 0, g: 0, b: 255, a: 0.35 };
       for (let i = 0; i < 7; i++) {
         let random = randomColor(0.4, 0.86).rgbaString();
-        let generatedColor = { r: random.slice(5,8), g: random.slice(10,13), b: random.slice(16,18), a: 0.5 };
+        let generatedColor = { r: random.slice(5,8), g: random.slice(10,13), b: random.slice(16,18), a: 0.7 };
         let mixed = normal(generatedColor, themeColor)
         output[i] = `rgba(${mixed.r}, ${mixed.g}, ${mixed.b}, .65)`;
       }      
