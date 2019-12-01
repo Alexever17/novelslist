@@ -111,7 +111,7 @@ export default {
 
 <style lang="less">
 @import "../node_modules/uikit/src/less/uikit.less";
-@import "./assets/less/theme.less";
+@import "./assets/less/component-stylesheets/theme.less";
 @import "./assets/less/main.less";
 
 #app {

@@ -146,7 +146,7 @@
 
 <script>
 // import the styles
-import "../assets/less/table.css";
+import "../assets/less/component-stylesheets/table.css";
 import { VueGoodTable } from "vue-good-table";
 import Modal from "./Modal.vue";
 import variables from "../assets/data/variables.json";
