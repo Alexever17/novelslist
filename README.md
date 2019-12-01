@@ -1,10 +1,12 @@
 # Novelslist 
 
-The third version of my website to showcase my favorit novels and books, this time with Vue.js
+The third version of my website to showcase my favorit novels and books, this time made with Vue.js.
+
+See my favorite novels and get inspired to read some!
 
 ## Preview
 
-![Preview of the live novelslist website](https://i.imgur.com/7IR5bLY.jpg)
+![Preview of the live novelslist website](https://i.imgur.com/bFRy9ia.png)
 
 ## Description
 
@@ -20,25 +22,25 @@ Please visit them at the link above!
 
 ## Livesite
 
-![badge website online](https://img.shields.io/website?style=for-the-badge&up_message=online&url=http%3A%2F%2Fnovelslist.netlify.com%2F)
-
-Live website can be currently found under: [novelslist on netlify](https://novelslist.netlify.com/). Live website will be updated constantly through development.
-
-Later it will be migrated to the custom URL which is currently online with an old version: [novelslist](https://novelslist.com/)
+![badge website online](https://img.shields.io/website?style=for-the-badge&up_message=online&url=http%3A%2F%2Fnovelslist.netlify.com%2F)  
+Live website can be found under: [novelslist](https://novelslist.com/)
 
 ## Features
 
 * Now
   * Carousel with recent additions
+  * Chart with database information
   * Filterable table with novel information
 * Future
   * Admin tools to change contents from the database on any device
+  * Mobile App
   * Eventual user features like faving novels from database or getting some novel suggestions
 
 ## Roadmap
 
-A finished MVP version of the website will be up on: 15.12.2019 <br/>
-Future Version will be announced at a later date.
+A finished MVP version of the website is currently live <br/>
+The current Roadmap looks like this:
+![novelslist roadmap](https://i.imgur.com/paoJcIp.png)
 
 ## Project setup
 
@@ -66,9 +68,16 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 ## Packages
 
-- [UIkit](https://getuikit.com/). - Overall great and flexible css library and additional functionality like a carousel. 
-- [vue.js](https://vuejs.org/). - My prefered front end library. Vue is amazing
+All Packages used were amazing and I hope anyone who stumbles upon them will try them out. It was a privilage and pleasure to work with these components:
+
+- [UIkit](https://getuikit.com/) - Overall great and flexible css library and additional functionality like a carousel. 
+- [vue.js](https://vuejs.org/) - My prefered front end library. Vue is amazing
+- [firebase](https://firebase.google.com/) - Great database solution and free for small websites. Made by google
 - [vue-good-table](https://xaksis.github.io/vue-good-table/) - Great and superbly powerful vue component for tables.
+- [vue-chartjs](https://vue-chartjs.org/) - Great wrapper for chart.js on the vue.js Plattform
+- [random-color](https://www.npmjs.com/package/random-color) - Nice package to create random colors with flexible requirements 
+- [color-blend](https://www.npmjs.com/package/color-blend) - Cool package to blend 2 colors together. A bit formating is necessary
+- [vue-cookie-law](https://www.npmjs.com/package/vue-cookie-law) - Simple cookie compliency component which was very easy to install. Great stuff
 
 ## Author(s)
 
