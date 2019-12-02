@@ -39,7 +39,7 @@
                 class="cover"
               />
               <h5 class="carouselRating">
-                {{ "Rating: " + novel.Rank + "/10" }}
+                {{ "Rating: " + novel.Rank + " / 10" }}
               </h5>
 
               <!-- This is a button toggling the modal -->
