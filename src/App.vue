@@ -6,6 +6,7 @@
       <Explainer :novels="novels" />
       <NovelsList :novels="novels" />
     </main>
+    <!-- aside to scroll to the top from the bottom of the apge -->
     <a
       href="#"
       style="uk-button uk-button-default"
@@ -14,6 +15,7 @@
       uk-totop
       >Scroll Up</a
     >
+    <!-- first time user get a cookie warning -->
     <footer>
     <cookie-law theme="dark-lime"></cookie-law>
   </footer>
@@ -73,12 +75,14 @@ export default {
     };
   },
   mounted() {
+    // API call to the firebase db
     db.collection("novels")
       .orderBy("Date", "desc")
       .get()
       .then(query => {
         var result = query.docs.map(x => x.data());
         //sorting for date in the novels with the most recent first
+        // used later to have easier time feeding recent novels in the slider
         this.novels = result.sort(function(a, b) {
           var aa = a.Date.split(".")
               .reverse()
@@ -94,7 +98,7 @@ export default {
       });
   },
   beforeCreate() {
-    //mass upload
+    //mass upload only function from backup
     // data.map(novel => {
     //     db.collection("novels")
     //       .add(novel)
@@ -112,6 +116,7 @@ export default {
 <style lang="less">
 @import "../node_modules/uikit/src/less/uikit.less";
 @import "./assets/less/component-stylesheets/theme.less";
+// personal main less/css file
 @import "./assets/less/main.less";
 
 #app {
@@ -144,6 +149,7 @@ main {
   }
 }
 
+//changing the cookiewarning button
 .Cookie__button {
   background: @mainColor !important;
 }
