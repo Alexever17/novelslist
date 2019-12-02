@@ -144,6 +144,7 @@ export default {
         otherEntries
       ];
     },
+    //groups novels database by the origin label and returns just the categories with the numbers
     groupBy(objectArray, property) {
       return objectArray.reduce(function(acc, obj) {
         var key = obj[property];
@@ -158,6 +159,7 @@ export default {
         return acc;
       }, {});
     },
+    //excludes the main categories and counts together the rest so that misspelled labels will be accounted for
     nonMainCategoriesCounter(c) {
       let result = 0;
       let cKeys = Object.keys(c);
@@ -181,13 +183,19 @@ export default {
 
       return result;
     },
+    //creates random colors for the chart which are blended in with blue to be more themed to the website
     colorCreator() {
       let output = [];
-      let themeColor = { r: 0, g: 0, b: 255, a: 0.35 };
+      //pure blue on alpha of .35
+      let blueColor = { r: 0, g: 0, b: 255, a: 0.35 };
       for (let i = 0; i < 7; i++) {
+        //generates random colors with some specific variables
         let random = randomColor(0.4, 0.86).rgbaString();
+        // formats the colors for the blender
         let generatedColor = { r: random.slice(5,8), g: random.slice(10,13), b: random.slice(16,18), a: 0.7 };
-        let mixed = normal(generatedColor, themeColor)
+        //blending the colors
+        let mixed = normal(generatedColor, blueColor)
+        //formating for display
         output[i] = `rgba(${mixed.r}, ${mixed.g}, ${mixed.b}, .65)`;
       }      
       return output;
@@ -200,6 +208,7 @@ export default {
 <style scoped lang="less">
 @import "../assets/less/main.less";
 
+//container for the 2 cards
 #explainer {
   width: 100%;
   margin: 2em 2em 0em 2em;
@@ -222,6 +231,7 @@ export default {
   max-width: unset;
 }
 
+//hides the long text on mobile devices by using a function from the main.less
 .longExplainText {
   .over1000();
 }
