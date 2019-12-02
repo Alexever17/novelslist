@@ -75,7 +75,7 @@
       "label": "Rank",
       "field": "Rank",
       "type": "number",
-      "width": "30px"
+      "width": "40px"
     },
     {
       "label": "Added",

@@ -77,6 +77,7 @@ export default {
   props: { novels: Array },
   watch: {
     // whenever novels changes, this function will run
+    // necessary to detect api call
     novels: function(newVal, oldVal) {
       let sumCategory = this.groupingNovels(newVal);
 

@@ -94,7 +94,7 @@
           >
         </span>
         <span v-if="props.column.field == 'Rank'">
-          <h4>{{ props.row.Rank }}</h4>
+          <h4>{{ props.row.Rank }} / 10</h4>
         </span>
         <span v-if="props.column.field == 'Date'">
           <h4>{{ props.row.Date }}</h4>
@@ -115,7 +115,7 @@
           <h3>{{ props.row.Title }}</h3>
           <div class="uk-flex uk-flex-between uk-flex-middle mobileFlexChange">
             <div>
-              <h4 class="noMargin">Ranking: {{ props.row.Rank }}</h4>
+              <h4 class="noMargin">Ranking: {{ props.row.Rank }} / 10</h4>
             </div>
             <div>
               <Modal :novel="props.row" uk-modal />
@@ -160,6 +160,7 @@ export default {
   },
   watch: {
     // whenever novels changes, this function will run
+    // necessary to detect api call
     novels: function(newVal, oldVal) {
       for (let i = 0; i < newVal.length; i++) {
         this.disableData[newVal[i].Title] = true;
