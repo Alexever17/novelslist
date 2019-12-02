@@ -24,7 +24,7 @@
         generate entries taking the data from the carouselData -->
         <li
           class="sliderParent"
-          v-for="(novel, index) in carouselData"
+          v-for="(novel) in carouselData"
           v-bind:key="novel.id"
         >
           <div class="novel">
