@@ -1,5 +1,6 @@
 <template>
   <div id="navContainer">
+    <!-- desktop navigation -->
     <nav class="uk-navbar-container" uk-navbar="mode: click" id="nav">
       <div class="uk-navbar-left">
         <ul class="uk-navbar-nav">
@@ -15,6 +16,7 @@
         </ul>
       </div>
     </nav>
+    <!-- mobile navigation -->
     <nav class="uk-navbar-container" uk-navbar="mode: click" id="navMobile">
       <div class="uk-navbar-left">
         <ul class="uk-navbar-nav">
@@ -27,6 +29,7 @@
             <button href="#offcanvas-slide" class="navbarLink uk-button uk-button-primary mainColorBackground" uk-toggle>Menu</button>
           </li>
         </ul>
+        <!-- there is an offcanvas feature in uikit which is perfect to create mobile menus -->
         <div id="offcanvas-slide" uk-offcanvas>
           <div class="uk-offcanvas-bar">
             <ul class="uk-nav uk-nav-default">
@@ -66,17 +69,20 @@ export default {
   background-repeat: no-repeat; /* Do not repeat the image */
   background-size: cover;
 }
+// desktop nav, hidden on mobile
 #nav {
   max-height: 250px;
   padding-left: 1em;
   .over1000();
   .backgroundImg();
 }
+// mobile nav, hidden on desktop
 #navMobile {
   .under1000();
   .backgroundImg();
 }
 
+//color change and slight changes to the menu button from mobile nav
 .mainColorBackground, .mainColorBackground:hover, .mainColorBackground:focus {
   padding: 0px 30px;
   background-color: @mainColor;
@@ -84,14 +90,17 @@ export default {
   color: white;
 }
 
+//nav buttons in both versions
 .navbarLink {
   font-size: 150%;
 }
 
+//logo
 #centerlogo {
   min-height: 100px;
   max-height: 120px;
 }
+
 //because of the picture the li elements are stretched large, so hover responds even when not directly on the a element
 //this fixes it
 .uk-navbar-nav > li:hover > a {
@@ -102,6 +111,7 @@ export default {
   color: #666;
 }
 
+//changes for the mobile version
 @media screen and (max-width: 900px) {
   .navbarLink {
     font-size: 100%;
