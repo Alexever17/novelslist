@@ -1,10 +1,12 @@
 <template>
+<!-- container for the 2 cards with infos and chart -->
   <div id="explainer" class="uk-flex uk-flex-center">
     <div
       class="uk-child-width-1-2@m uk-child-width-1-2@l uk-grid-medium uk-grid-match uk-flex-center uk-width-1-1"
       uk-grid
     >
       <div>
+        <!-- cards ahve additional borders, standard card from uikit -->
         <div class="uk-card uk-card-default uk-card-body border">
           <article class="uk-comment">
             <header class="uk-comment-header uk-grid-medium uk-flex-middle uk-grid" uk-grid>
@@ -35,6 +37,7 @@
               <p>
                 I love reading web novels and want to share my passion with you.
                 On this website you can find all novels I ever read.
+                <!-- longExplainText hides the long text on mobile devices -->
                 <span
                   class="longExplainText"
                 >
@@ -60,6 +63,7 @@
         <div class="uk-card uk-card-default uk-card-body border">
           <h3 class="uk-card-title">Database Information</h3>
           <p>Click on a category to disable it from the chart or add it again.</p>
+          <!-- chart component -->
           <PieChart v-if="loaded" :options="options" :chartdata="chartdata"/>
         </div>
       </div>
@@ -79,6 +83,7 @@ export default {
     // whenever novels changes, this function will run
     // necessary to detect api call
     novels: function(newVal, oldVal) {
+      //functions which creates the array of numbers of database categories
       let sumCategory = this.groupingNovels(newVal);
 
       this.chartdata = {
@@ -86,17 +91,20 @@ export default {
         datasets: [
           {
             label: "Alexever17 Novels",
+            // creates an array of colors
             backgroundColor: this.colorCreator(),
+            //earlier created array of bumbers
             data: sumCategory
           }
         ]
       };
-
+      //chart is hidden until the data is generated because chart has bad update compatibility
       this.loaded = true;
     }
   },
   data() {
     return {
+      //needs data before display --> api call
       loaded: false,
       chartdata: null,
       chartlabels: [
@@ -105,12 +113,12 @@ export default {
         "Japanese Novels",
         "Webnovel Originals",
         "Traditional Books",
-        "Other Websites",
-        "Dropped Novels"
+        "Other Websites"
       ],
       options: {
         responsive: true,
         maintainAspectRatio: false,
+        //makes it half a doughnut
         circumference: Math.PI,
         rotation: -Math.PI
       }
@@ -118,27 +126,22 @@ export default {
   },
   components: { PieChart },
   methods: {
-    timeNumber() {
-      const date1 = new Date(2019, 9, 19, 20, 0);
-      const date2 = new Date();
-      let days = Math.round((date2 - date1) / 1000 / 60 / 60 / 24);
-      return days;
-    },
+    //creates the array of numbers to the categories of the entries of the database
+    //input is the api call
     groupingNovels(input) {
+      // groups by the label characteristic Origin
       var c = this.groupBy(input, "Origin");
+      // extra variable to count categories which are not main ones together
       let otherEntries = this.nonMainCategoriesCounter(c);
 
-      let dropped = this.groupBy(input, "Dropped");
-      let sumDropped = dropped.true[0];
-
+      //returns the array
       return [
         c.chinese[0],
         c.japanese[0],
         c.korean[0],
         c.webnovel[0],
         c.book[0],
-        otherEntries,
-        sumDropped
+        otherEntries
       ];
     },
     groupBy(objectArray, property) {
