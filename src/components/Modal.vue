@@ -1,5 +1,6 @@
 <template>
   <!-- This is the modal with the default close button -->
+  <!-- modalIdMaker is used to convert the title of the novel into a usable id -->
   <div uk-modal :id="'modal' + modalIdMaker(novel.Title)">
     <div class="uk-modal-dialog uk-modal-body uk-text-center">
       <button class="uk-modal-close-default" type="button" uk-close></button>
@@ -14,6 +15,8 @@
         <div>
           <h4>
             Status:
+            <!-- changes the status entry in the database which is a boolean to text -->
+            <!-- conditional css selector -->
             <span
               :class="novel.Dropped ? labelDanger : labelSuccess"
             >{{droppedToTextConverter(novel.Dropped)}}</span>
@@ -30,7 +33,7 @@
         rel="preconnect"
         :src="novel.Picture"
         :alt="novel.Title + ' Cover'"
-        class="cover modalCover"
+        class="modalCover"
       />
       <div class="uk-flex uk-flex-around uk-flex-wrap">
         <div>
@@ -42,6 +45,7 @@
         <div>
           <h4>
             Rank:
+            <!-- uses the label design for the ranking for better visual -->
             <span class="uk-label tableLabel">{{novel.Rank}}</span>
           </h4>
         </div>
@@ -60,19 +64,22 @@ export default {
   props: { novel: Object },
   data() {
     return {
+      //for conditional randering of css
       labelDanger: "uk-label uk-label-danger tableLabel",
       labelSuccess: "uk-label uk-label-success tableLabel"
     };
   },
   methods: {
+    //makes title to id
     modalIdMaker(input) {
       return input.replace(/\W+/g, "");
     },
+    //converts dropped boolean to text
     droppedToTextConverter(status) {
       if (status) {
         return "Dropped";
       } else {
-        return "Still reading";
+        return "Reading/Finished";
       }
     }
   }
@@ -84,16 +91,15 @@ export default {
 .uk-label {
   font-size: 80%;
 }
+//picture
 .modalCover {
   margin-bottom: 1em;
+  height: 400px;
 }
 .modalDescription {
   margin-top: 0;
 }
 .modalLinkButton {
   background-color: rgba(57, 0, 90, 0.5);
-}
-.cover {
-  height: 400px;
 }
 </style>
