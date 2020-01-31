@@ -1,5 +1,5 @@
 <template>
-<!-- container for the slider with title and the slider -->
+  <!-- container for the slider with title and the slider -->
   <div id="carouselContainer">
     <!-- title of the container -->
     <div class="uk-card uk-card-default uk-card-body border" id="carouselTitle">
@@ -15,54 +15,44 @@
       uk-slider="autoplay: true; autoplay-interval: 12000; sets: true"
       id="carousel"
     >
-    <!-- ul which holds the entries -->
+      <!-- ul which holds the entries -->
       <ul
         class="uk-slider-items uk-child-width-1 uk-child-width-1-1@s uk-child-width-1-2@m uk-child-width-1-3@l uk-child-width-1-4@xl uk-grid"
         style="transform: translateX(0px);"
       >
         <!-- Entries into the Carousel, uses vues v-for method to 
-        generate entries taking the data from the carouselData -->
-        <li
-          class="sliderParent"
-          v-for="(novel) in carouselData"
-          v-bind:key="novel.id"
-        >
+        generate entries taking the data from the carouselData-->
+        <li class="sliderParent" v-for="(novel) in carouselData" v-bind:key="novel.id">
           <div class="novel">
-            <h3 class="title uk-heading-line uk-text-center carouselTitle">
-              {{ novel.Title }}
-            </h3>
+            <h3 class="title uk-heading-line uk-text-center carouselTitle">{{ novel.Title }}</h3>
             <div>
               <img
                 rel="preconnect"
                 :src="novel.Picture"
                 :alt="novel.Title + ' Cover'"
                 class="cover"
-              />
-              <h5 class="carouselRating">
-                {{ "Rating: " + novel.Rank + " / 10" }}
-              </h5>
+              >
+              <h5 class="carouselRating">{{ "Rating: " + novel.Rank + " / 10" }}</h5>
 
               <!-- This is a button toggling the modal -->
               <!-- modealIdMaker transforms a novels title to create a valide id -->
               <button
-                class="uk-button uk-button-primary"
+                class="uk-button uk-button-primary modalButton"
                 type="button"
                 :uk-toggle="'target: #' + 'modal' + modalIdMaker(novel.Title)"
-              >
-                More Info
-              </button>
+              >More Info</button>
+              <a :href="novel.Link" target="_blank">
+                <button class="uk-button uk-button-primary">Novel Link</button>
+              </a>
               <!-- Modal with more information, generated for each carousel component -->
-              <Modal :novel="novel" uk-modal />
+              <Modal :novel="novel" uk-modal/>
             </div>
           </div>
         </li>
       </ul>
 
       <!-- outside navigation for the slider AKA THE DOTS -->
-      <ul
-        class="uk-slider-nav uk-dotnav uk-flex-center uk-margin focusCorrection"
-        id="dotnav"
-      ></ul>
+      <ul class="uk-slider-nav uk-dotnav uk-flex-center uk-margin focusCorrection" id="dotnav"></ul>
     </div>
   </div>
 </template>
@@ -171,5 +161,9 @@ export default {
 //carousel rating
 .carouselRating {
   margin: 10px 0 15px 0;
+}
+
+.modalButton {
+  margin-right: 10px;
 }
 </style>
