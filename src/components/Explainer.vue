@@ -14,7 +14,7 @@
                 <!-- admins profile pic -->
                 <img
                   class="uk-comment-avatar"
-                  src="https://pbs.twimg.com/profile_images/790276964049362944/MXjuA9bL_400x400.jpg"
+                  src="https://cdn.proxer.me/avatar/274858_1Whw0i.png"
                   width="80"
                   height="80"
                   alt
