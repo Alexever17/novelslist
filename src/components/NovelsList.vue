@@ -111,6 +111,11 @@
             type="button"
             :uk-toggle="'target: #' + 'modal' + modalIdMaker(props.row.Title)"
           >More Info</a>
+          <a
+                class="uk-button uk-button-default tableInfo"
+                type="button"
+                :href="props.row.Link"
+              >Novel Link</a>
         </span>
         <!-- ranking visible -->
         <span v-if="props.column.field == 'Rank'">

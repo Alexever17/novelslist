@@ -69,7 +69,7 @@
     {
       "label": "Title",
       "field": "Title",
-      "width": "180px"
+      "width": "177px"
     },
     {
       "label": "Rank",
@@ -107,7 +107,7 @@
     {
       "label": "Info",
       "field": "Link",
-      "width": "94px",
+      "width": "97px",
       "sortable": false
     },
     {

@@ -5,6 +5,7 @@
     <div class="uk-modal-dialog uk-modal-body uk-text-center">
       <button class="uk-modal-close-default" type="button" uk-close></button>
       <h2 class="uk-modal-title">{{novel.Title}}</h2>
+      <h4 class="bottomMargin">Author: {{novel.Author}}</h4>
       <div class="uk-flex uk-flex-around uk-flex-wrap">
         <div>
           <h4>
@@ -19,7 +20,7 @@
             <!-- conditional css selector -->
             <span
               :class="novel.Dropped ? labelDanger : labelSuccess"
-            >{{droppedToTextConverter(novel.Dropped)}}</span>
+            >{{droppedToTextConverter(novel.Dropped, novel.Finished)}}</span>
           </h4>
         </div>
         <div>
@@ -51,6 +52,8 @@
         </div>
       </div>
       <p class="modalDescription">{{novel.Description}}</p>
+      <h4>Review Statement</h4>
+      <p class="modalDescription">{{novel.Review}}</p>
       <a :href="novel.Link" target="_blank">
         <button class="uk-button uk-button-primary modalLinkButton">Novel Link</button>
       </a>
@@ -75,11 +78,13 @@ export default {
       return input.replace(/\W+/g, "");
     },
     //converts dropped boolean to text
-    droppedToTextConverter(status) {
+    droppedToTextConverter(status, finished) {
       if (status) {
         return "Dropped";
+      } else if (status && finished){
+        return "Finished";
       } else {
-        return "Reading/Finished";
+        return "Reading";
       }
     }
   }
@@ -90,6 +95,9 @@ export default {
 <style scoped lang="less">
 .uk-label {
   font-size: 80%;
+}
+.bottomMargin {
+  margin: 0 0 20px 0;
 }
 //picture
 .modalCover {
