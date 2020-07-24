@@ -32,7 +32,7 @@ import Explainer from "./components/Explainer.vue";
 import Carousel from "./components/Carousel.vue";
 import NovelsList from "./components/NovelsList.vue";
 //for mass upload
-//import data from "./assets/data/csvjson.json";
+import data from "./assets/data/novels.json";
 
 //the core of firebase
 import * as firebase from "firebase/app";
@@ -76,14 +76,27 @@ export default {
   },
   mounted() {
     // API call to the firebase db
-    db.collection("novels")
-      .orderBy("Date", "desc")
-      .get()
-      .then(query => {
-        var result = query.docs.map(x => x.data());
-        //sorting for date in the novels with the most recent first
-        // used later to have easier time feeding recent novels in the slider
-        this.novels = result.sort(function(a, b) {
+    // db.collection("novels")
+    //   .orderBy("Date", "desc")
+    //   .get()
+    //   .then(query => {
+    //     var result = query.docs.map(x => x.data());
+    //     //sorting for date in the novels with the most recent first
+    //     // used later to have easier time feeding recent novels in the slider
+    //     this.novels = result.sort(function(a, b) {
+    //       var aa = a.Date.split(".")
+    //           .reverse()
+    //           .join(""),
+    //         bb = b.Date.split(".")
+    //           .reverse()
+    //           .join("");
+    //       return aa < bb ? 1 : aa > bb ? -1 : 0;
+    //     });
+    //   })
+    //   .catch(function(error) {
+    //     this.novels = "Error getting documents: " + error;
+    //   });
+    this.novels = data.sort(function(a, b) {
           var aa = a.Date.split(".")
               .reverse()
               .join(""),
@@ -92,10 +105,6 @@ export default {
               .join("");
           return aa < bb ? 1 : aa > bb ? -1 : 0;
         });
-      })
-      .catch(function(error) {
-        this.novels = "Error getting documents: " + error;
-      });
   },
   beforeCreate() {
     //mass upload only function from backup
