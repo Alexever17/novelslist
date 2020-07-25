@@ -5,7 +5,7 @@
     <div class="uk-modal-dialog uk-modal-body uk-text-center">
       <button class="uk-modal-close-default" type="button" uk-close></button>
       <h2 class="uk-modal-title">{{novel.Title}}</h2>
-      <h4 class="bottomMargin">Author: {{novel.Author}}</h4>
+      <h4 class="bottomMargin" v-if="novel.Author">Author: {{novel.Author}}</h4>
       <div class="uk-flex uk-flex-around uk-flex-wrap">
         <div>
           <h4>
@@ -51,8 +51,8 @@
           </h4>
         </div>
       </div>
-      <h4>Review Statement</h4>
-      <p class="modalDescription">{{novel.Review}}</p>
+      <h4 v-if="novel.Review">Review Statement</h4>
+      <p class="modalDescription" v-if="novel.Review">{{novel.Review}}</p>
       <h4>Description</h4>
       <p class="modalDescription">{{novel.Description}}</p>
       <a :href="novel.Link" target="_blank">
