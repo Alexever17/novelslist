@@ -38,22 +38,23 @@
       />
       <div class="uk-flex uk-flex-around uk-flex-wrap">
         <div>
-          <h4>
+          <h4 class="noBottomMargin">
             Progress:
             <b>{{novel.Progress}}</b>
           </h4>
         </div>
         <div>
-          <h4>
+          <h4 class="noBottomMargin">
             Rank:
             <!-- uses the label design for the ranking for better visual -->
             <span class="uk-label tableLabel">{{novel.Rank}}</span>
           </h4>
         </div>
       </div>
-      <p class="modalDescription">{{novel.Description}}</p>
       <h4>Review Statement</h4>
       <p class="modalDescription">{{novel.Review}}</p>
+      <h4>Description</h4>
+      <p class="modalDescription">{{novel.Description}}</p>
       <a :href="novel.Link" target="_blank">
         <button class="uk-button uk-button-primary modalLinkButton">Novel Link</button>
       </a>
@@ -103,6 +104,9 @@ export default {
 .modalCover {
   margin-bottom: 1em;
   height: 400px;
+}
+.noBottomMargin {
+  margin-bottom: 0;
 }
 .modalDescription {
   margin-top: 0;
