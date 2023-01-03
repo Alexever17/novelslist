@@ -36,25 +36,7 @@
               <h3 class="uk-card-title">Welcome!</h3>
               <p>
                 I love reading web novels and want to share my passion with you.
-                On this website you can find all novels I ever read.
-                <!-- longExplainText hides the long text on mobile devices -->
-                <span
-                  class="longExplainText"
-                >
-                  <br>Sometimes it is difficult to find the most interesting
-                  novels, because many are translated by fans and aren't
-                  released officially. There are multiple sources to find novels
-                  but the two most used are novelupdates.com and webnovel.com.
-                  Novelupdates is a website which tracks all translated novels
-                  and has their information. There you can find the licensing
-                  information and where you can read it. Webnovel meanwhile is
-                  the biggest plattform for translated and original
-                  novels.
-                </span>
-              </p>
-              <a href="https://novelupdates.com">Novel Updates</a>
-              <br>
-              <a href="https://webnovel.com">Webnovel</a>
+                On this website you can find all novels I ever read.</p>
             </div>
           </article>
         </div>
@@ -185,20 +167,27 @@ export default {
     },
     //creates random colors for the chart which are blended in with blue to be more themed to the website
     colorCreator() {
-      let output = [];
+      //let output = [];
       //pure blue on alpha of .35
-      let blueColor = { r: 0, g: 0, b: 255, a: 0.35 };
-      for (let i = 0; i < 7; i++) {
+      //let blueColor = { r: 0, g: 0, b: 255, a: 0.35 };
+      //for (let i = 0; i < 7; i++) {
         //generates random colors with some specific variables
-        let random = randomColor(0.4, 0.86).rgbaString();
+        //let random = randomColor(0.4, 0.86).rgbaString();
         // formats the colors for the blender
-        let generatedColor = { r: random.slice(5,8), g: random.slice(10,13), b: random.slice(16,18), a: 0.7 };
+        //let generatedColor = { r: random.slice(5,8), g: random.slice(10,13), b: random.slice(16,18), a: 0.7 };
         //blending the colors
-        let mixed = normal(generatedColor, blueColor)
+        //let mixed = normal(generatedColor, blueColor)
         //formating for display
-        output[i] = `rgba(${mixed.r}, ${mixed.g}, ${mixed.b}, .65)`;
-      }      
-      return output;
+        //output[i] = `rgba(${mixed.r}, ${mixed.g}, ${mixed.b}, .65)`;
+      //}      
+      return [
+      `rgba(116, 0, 184, 0.65)`,
+      `rgba(94, 96, 206, 0.65)`,
+      `rgba(78, 168, 222, 0.65)`,
+      `rgba(72, 191, 227, 0.65)`,
+      `rgba(100, 223, 223, 0.65)`,
+      `rgba(128, 255, 219, 0.65)`
+    ];
     }
   }
 };

@@ -3,8 +3,9 @@
         <main>
             <Nav />
             <Carousel :novels="novels" />
-            <Explainer :novels="novels" />
             <NovelsList :novels="novels" />
+            <Explainer :novels="novels" />
+            
         </main>
         <!-- aside to scroll to the top from the bottom of the apge -->
         <a
@@ -44,32 +45,6 @@ import NovelsList from "./components/NovelsList.vue";
 //for mass upload
 import data from "./assets/data/novels.json";
 
-//the core of firebase
-import * as firebase from "firebase/app";
-
-// If you enabled Analytics in your project, add the Firebase SDK for Analytics
-import "firebase/analytics";
-
-// Add the Firebase products that you want to use
-import "firebase/auth";
-import "firebase/firestore";
-
-var firebaseConfig = {
-    apiKey: process.env.VUE_APP_apiKey,
-    authDomain: process.env.VUE_APP_authDomain,
-    databaseURL: process.env.VUE_APP_databaseURL,
-    projectId: process.env.VUE_APP_projectId,
-    storageBucket: process.env.VUE_APP_storageBucket,
-    messagingSenderId: process.env.VUE_APP_messagingSenderId,
-    appId: process.env.VUE_APP_appId,
-    measurementId: process.env.VUE_APP_measurementId,
-};
-
-firebase.initializeApp(firebaseConfig);
-firebase.analytics();
-
-var db = firebase.firestore();
-
 export default {
     name: "app",
     components: {
@@ -85,27 +60,6 @@ export default {
         };
     },
     mounted() {
-        // API call to the firebase db
-        // db.collection("novels")
-        //   .orderBy("Date", "desc")
-        //   .get()
-        //   .then(query => {
-        //     var result = query.docs.map(x => x.data());
-        //     //sorting for date in the novels with the most recent first
-        //     // used later to have easier time feeding recent novels in the slider
-        //     this.novels = result.sort(function(a, b) {
-        //       var aa = a.Date.split(".")
-        //           .reverse()
-        //           .join(""),
-        //         bb = b.Date.split(".")
-        //           .reverse()
-        //           .join("");
-        //       return aa < bb ? 1 : aa > bb ? -1 : 0;
-        //     });
-        //   })
-        //   .catch(function(error) {
-        //     this.novels = "Error getting documents: " + error;
-        //   });
         this.novels = data.sort(function(a, b) {
             var aa = a.Date.split(".")
                     .reverse()
@@ -123,17 +77,6 @@ export default {
         };
     },
     beforeCreate() {
-        //mass upload only function from backup
-        // data.map(novel => {
-        //     db.collection("novels")
-        //       .add(novel)
-        //       .then(function(docRef) {
-        //         console.log("Document written with ID: ", docRef.id);
-        //       })
-        //       .catch(function(error) {
-        //         console.error("Error adding document: ", error);
-        //       });
-        //   });
     },
 };
 </script>
